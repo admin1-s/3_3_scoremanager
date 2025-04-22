@@ -11,7 +11,7 @@
     body {
       font-family: sans-serif;
       margin: 0;
-      background-color: #f5f5f5;
+      background-color: white;
     }
 
     header {

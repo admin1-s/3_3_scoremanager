@@ -18,15 +18,26 @@ public class FrontController extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String path = request.getServletPath().substring(1);
-            String name = path.replace(".a", "A").replace('/', '.');
+
+            String base="scoremanager.main.";
+
+            String name =base + path.replace(".a", "A").replace('/', '.').replace(".action", "Action");
+
+            System.out.println("★ servlet path ->"+request.getServletPath());
+			System.out.println("★ class name ->"+name);
+
             Action action = (Action) Class.forName(name)
                 .getDeclaredConstructor().newInstance();
 
-            String url = action.execute(request, response);
-            request.getRequestDispatcher(url).forward(request, response);
+          //遷移先URLを取得
+			action.execute(request, response);
+
         } catch (Exception e) {
-            e.printStackTrace(out);
+        	request.getRequestDispatcher("/main/error.jsp").forward(request, response);
+			System.out.println(e);
         }
+
+
     }
 
     public void doGet(

@@ -21,7 +21,7 @@
 
         <div class="card blue">
             <h3>⑥ 科目管理</h3>
-            <a href="subjectManage.jsp">科目管理</a>
+            <a href="SubjectList.action">科目管理</a>
         </div>
     </div>
 </div>
