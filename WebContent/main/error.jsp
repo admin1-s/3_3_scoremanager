@@ -3,5 +3,5 @@
 
 <p>エラーが発生しました。</p>
 <br>
-<a href="../common/index.jsp">戻る</a><br>
+<a href="../main/index.jsp">戻る</a><br>
 <%@include file="../tool/footer.jsp" %>

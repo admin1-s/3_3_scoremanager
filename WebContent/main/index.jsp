@@ -15,7 +15,7 @@
 
         <div class="card green">
             <h3>③ 成績管理</h3>
-            <a href="../common/seisekitoroku.jsp">④ 成績登録</a>
+            <a href="../main/seisekitoroku.jsp">④ 成績登録</a>
             <a href="gradeView.jsp">⑤ 成績参照</a>
         </div>
 

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="../tool/header.jsp" />
-<jsp:include page="../common/menu.jsp" />
+<jsp:include page="../main/menu.jsp" />
 
 <style>
     .content-area {

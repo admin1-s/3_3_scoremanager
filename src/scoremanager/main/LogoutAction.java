@@ -15,9 +15,9 @@ public class LogoutAction extends Action {
 
         if (session.getAttribute("teacher") != null) {
             session.removeAttribute("teacher");
-            return "../common/logout.jsp";
+            return "../main/logout.jsp";
         }
 
-        return "../common/logout-error.jsp";
+        return "../main/logout-error.jsp";
     }
 }

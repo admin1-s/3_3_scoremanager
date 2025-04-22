@@ -33,7 +33,7 @@ public class StudentInfo extends HttpServlet {
         }
 
         request.setAttribute("list", students);
-        request.getRequestDispatcher("../common/studentAdd.jsp").forward(request, response);
+        request.getRequestDispatcher("../main/studentAdd.jsp").forward(request, response);
     }
 }
 
