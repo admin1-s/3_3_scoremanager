@@ -2,10 +2,10 @@
 <%--メニュー画面を表示するクラス--%>
 <div class="menu">
     <nav>
-    <a href="../common/index.jsp">メニュー</a>
+    <a href="../main/index.jsp">メニュー</a>
     <a href="../scoremanager.main/studentlist3">学生管理</a>
     <a href="#">成績管理</a>
-    <a href="../common/seisekitoroku.jsp">　成績登録</a>
+    <a href="../main/seisekitoroku.jsp">　成績登録</a>
     <a href="#">　成績参照</a>
     <a href="#">科目管理</a>
 	</nav>

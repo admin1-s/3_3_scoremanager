@@ -111,7 +111,7 @@
                 <a href="../scoremanager.main/Logout.action">ログアウト</a>
             </c:when>
             <c:otherwise>
-                <a href="../common/login-in.jsp">ログイン</a>
+                <a href="../main/login-in.jsp">ログイン</a>
             </c:otherwise>
         </c:choose>
     </div>

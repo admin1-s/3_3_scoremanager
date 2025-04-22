@@ -35,7 +35,7 @@ public class StudentAdd extends HttpServlet {
             dao.insert(student); // DAOメソッド呼び出し
 
             // 成功後は成功画面へ遷移（リダイレクト）
-            response.sendRedirect("../common/studentAddOut.jsp");
+            response.sendRedirect("../main/studentAddOut.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();

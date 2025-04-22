@@ -38,7 +38,6 @@ public class ClassNumDao {
         	}
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

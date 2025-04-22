@@ -54,7 +54,7 @@ public class StudentList2 extends HttpServlet {
 			request.setAttribute("f3", isAttend != null ? "t" : null);
 
 			// 画面遷移
-			request.getRequestDispatcher("../common/studentlist.jsp").forward(request, response);
+			request.getRequestDispatcher("../main/studentlist.jsp").forward(request, response);
 
 		} catch (Exception e) {
 			e.printStackTrace();

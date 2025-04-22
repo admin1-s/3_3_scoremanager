@@ -7,6 +7,7 @@ public class Teacher extends User implements Serializable{
 	private String password;
 	private String name;
 	private School school;
+	private String school_cd;
 
 	public String getId() {
         return id;
@@ -28,6 +29,7 @@ public class Teacher extends User implements Serializable{
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
@@ -39,4 +41,12 @@ public class Teacher extends User implements Serializable{
     public void setSchool(School school) {
         this.school = school;
     }
+
+    public String getSchool_cd(){
+    	return this.school_cd;
+    }
+
+    public void setSchool_cd(String cd){
+		this.school_cd=cd;
+	}
 }

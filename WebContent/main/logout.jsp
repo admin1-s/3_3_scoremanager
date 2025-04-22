@@ -80,7 +80,7 @@
 <div class="box">
     <div class="title">ログアウト</div>
     <div class="message">ログアウトしました</div>
-    <div class="link"><a href="../common/login-in.jsp">ログイン</a></div>
+    <div class="link"><a href="../main/login-in.jsp">ログイン</a></div>
 </div>
 
 <div class="footer">

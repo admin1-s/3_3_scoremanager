@@ -22,13 +22,13 @@ public class LoginAction extends Action {
 
             if (teacher != null) {
                 session.setAttribute("teacher", teacher);
-                return "../common/login-out.jsp";
+                return "../main/login-out.jsp";
             }
 
-            return "../common/login-error.jsp"; // 認証失敗
+            return "../main/login-error.jsp"; // 認証失敗
         } catch (Exception e) {
             e.printStackTrace(); // ログに出す
-            return "../common/error.jsp"; // ← ここでエラーページへ飛ばす
+            return "../main/error.jsp"; // ← ここでエラーページへ飛ばす
         }
     }
 }
