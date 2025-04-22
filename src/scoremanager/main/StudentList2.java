@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Student;
-import dao.StudentDAO;
+import dao.StudentDao;
 
 @WebServlet(urlPatterns = { "/scoremanager.main/studentlist3" })
 public class StudentList2 extends HttpServlet {
@@ -30,7 +30,7 @@ public class StudentList2 extends HttpServlet {
 			String classNum = (f2 != null && !f2.equals("0") && !f2.isEmpty()) ? f2 : null;
 			Boolean isAttend = (f3 != null && f3.equals("t")) ? true : null;
 
-			StudentDAO dao = new StudentDAO();
+			StudentDao dao = new StudentDao();
 
 			List<Student> list;
 
