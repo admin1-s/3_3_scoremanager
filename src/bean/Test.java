@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class Test extends User implements Serializable{
+public class Test implements Serializable{
 	private String student_no;
 	private String subject_no;
 	private String school_cd;
