@@ -33,5 +33,5 @@ public class Test extends User implements Serializable{
     public void setSchoolCd(String school_cd) {
         this.school_cd = school_cd;
     }
-
+//あいうえお
 }
