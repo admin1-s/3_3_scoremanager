@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Teacher;
-import dao.TeacherDAO;
+import dao.TeacherDao;
 import tool.Action;
 
 public class LoginAction extends Action {
@@ -17,7 +17,7 @@ public class LoginAction extends Action {
             String id = request.getParameter("id");
             String password = request.getParameter("password");
 
-            TeacherDAO dao = new TeacherDAO();
+            TeacherDao dao = new TeacherDao();
             Teacher teacher = dao.search(id, password); // ← ここでDB接続エラーが起こる可能性あり
 
             if (teacher != null) {

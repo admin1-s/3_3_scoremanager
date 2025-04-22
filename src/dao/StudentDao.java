@@ -8,7 +8,7 @@ import java.util.List;
 
 import bean.Student;
 
-public class StudentDAO extends DAO {
+public class StudentDao extends Dao {
 
     // 全件取得
     public List<Student> selectAll() throws Exception {
