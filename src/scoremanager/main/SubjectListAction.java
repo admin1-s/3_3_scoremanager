@@ -1,4 +1,4 @@
-package main;
+package scoremanager.main;
 
 import java.util.List;
 
@@ -24,17 +24,20 @@ public class SubjectListAction extends Action{
 
 		//未ログインの時
 		if (teacher == null){
+			System.out.println("teacher is null.");
 			return "main/login-in.jsp";
 		}
 
 		//学校を取得
 		School school=teacher.getSchool();
+
+
 		SubjectDao dao=new SubjectDao();
 		//対象の学校に対する科目一覧
-		List<Subject> list=dao.filter(school);
+		List<Subject> subjectlist=dao.filter(school);
 
-		request.setAttribute("subjectList", list);
-		return "main/subject_list.jsp";
+		request.setAttribute("subjectList", subjectlist);
+		return "../main/subject_list.jsp";
 
 	}
 }

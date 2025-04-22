@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.School;
 import bean.Teacher;
+import dao.SchoolDao;
 import dao.TeacherDao;
 import tool.Action;
 
@@ -20,9 +22,14 @@ public class LoginAction extends Action {
             TeacherDao dao = new TeacherDao();
             Teacher teacher = dao.search(id, password); // ← ここでDB接続エラーが起こる可能性あり
 
+            SchoolDao sdao=new SchoolDao();
+            School school=sdao.get(teacher.getSchool_cd());
+            teacher.setSchool(school);
+
             if (teacher != null) {
-                session.setAttribute("teacher", teacher);
-                return "../main/login-out.jsp";
+                //session.setAttribute("teacher", teacher);
+            	request.getSession().setAttribute("teacher", teacher);
+                return "../main/index.jsp";
             }
 
             return "../main/login-error.jsp"; // 認証失敗
