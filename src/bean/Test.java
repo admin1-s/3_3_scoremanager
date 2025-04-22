@@ -33,5 +33,28 @@ public class Test extends User implements Serializable{
     public void setSchoolCd(String school_cd) {
         this.school_cd = school_cd;
     }
-//iasgiq
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public String getClassNum() {
+        return class_num;
+    }
+
+    public void setClassNum(String class_num) {
+        this.class_num = class_num;
+    }
 }
