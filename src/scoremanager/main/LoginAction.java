@@ -27,8 +27,7 @@ public class LoginAction extends Action {
             teacher.setSchool(school);
 
             if (teacher != null) {
-                //session.setAttribute("teacher", teacher);
-            	request.getSession().setAttribute("teacher", teacher);
+                session.setAttribute("teacher", teacher);
                 return "../main/index.jsp";
             }
 
