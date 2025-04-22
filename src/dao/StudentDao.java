@@ -71,7 +71,11 @@ public class StudentDao extends Dao {
         rs.close();
         st.close();
         con.close();
+<<<<<<< HEAD
 
+=======
+//
+>>>>>>> branch 'master' of https://github.com/admin1-s/3_3_scoremanager.git
         return list;
     }
 

@@ -15,4 +15,8 @@ public class Dao {
 		}
 		return ds.getConnection();
 	}
+<<<<<<< HEAD
 }
+=======
+}//
+>>>>>>> branch 'master' of https://github.com/admin1-s/3_3_scoremanager.git

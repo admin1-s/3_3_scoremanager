@@ -31,4 +31,8 @@ public class TeacherDao extends Dao {
         con.close();
         return teacher;
     }
+<<<<<<< HEAD
 }
+=======
+}//
+>>>>>>> branch 'master' of https://github.com/admin1-s/3_3_scoremanager.git
