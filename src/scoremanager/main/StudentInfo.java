@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Student;
-import dao.StudentDAO;
+import dao.StudentDao;
 //データベースから取得した情報をjspに渡す
 @WebServlet(urlPatterns={"/scoremanager.main/studentInfo"})
 public class StudentInfo extends HttpServlet {
@@ -19,7 +19,7 @@ public class StudentInfo extends HttpServlet {
     // 学生情報入力ページ表示用（GET）
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StudentDAO dao = new StudentDAO();
+        StudentDao dao = new StudentDao();
         List<Student> students = new ArrayList<>();
 
         try {

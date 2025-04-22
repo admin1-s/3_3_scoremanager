@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Student;
-import dao.StudentDAO;
+import dao.StudentDao;
 
 @WebServlet(urlPatterns={"/scoremanager.main/studentAdd"})
 public class StudentAdd extends HttpServlet {
@@ -31,7 +31,7 @@ public class StudentAdd extends HttpServlet {
             student.setClassNum(classNum);
             student.setAttend(true); // 登録時点では在学中とする
 
-            StudentDAO dao = new StudentDAO();
+            StudentDao dao = new StudentDao();
             dao.insert(student); // DAOメソッド呼び出し
 
             // 成功後は成功画面へ遷移（リダイレクト）
