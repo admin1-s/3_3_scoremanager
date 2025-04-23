@@ -6,7 +6,7 @@
     <a href="../scoremanager.main/StudentList.action">学生管理</a>
     <a href="#">成績管理</a>
     <a href="../main/seisekitoroku.jsp">　成績登録</a>
-    <a href="#">　成績参照</a>
+    <a href="../main/seisekisansyou.jsp">　成績参照</a>
     <a href="../scoremanager.main/SubjectList.action">科目管理</a>
 	</nav>
 </div>
