@@ -23,7 +23,7 @@
     .btn {
   		padding: 5px 10px; /* 内側の余白設定 */
   		border-radius: 12px; /* 要素の角を丸くする */
-  		background-color: #0000ff; /* 背景色指定 */
+  		background-color: #00bfff; /* 背景色指定 */
   		text-decoration: none; /* aタグの下線を非表示に */
   		color: #fff; /* 文字色 */
   		font-size: 15px; /* フォントサイズ */
@@ -36,7 +36,7 @@
     <div class="title-area">科目情報登録</div>
 
 		<div>
-			<form action="subject_create" method="post" style="margin-left: 10px;">
+			<form action="SubjectCreateExecute.action" method="post" style="margin-left: 10px;">
 				<p>
 				科目コード<br>
 				<input type="text" name="cd" maxlength="3" placeholder="科目コードを入力してください"

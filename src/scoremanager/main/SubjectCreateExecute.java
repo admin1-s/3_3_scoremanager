@@ -1,25 +1,18 @@
 package scoremanager.main;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.School;
-import bean.Subject;
 import bean.Teacher;
-import dao.SubjectDao;
 import tool.Action;
 
-public class SubjectListAction extends Action{
+public class SubjectCreateExecute extends Action{
 
 	@Override
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
-
-		System.out.println("execute通りました");
 
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher) session.getAttribute("teacher");
@@ -30,16 +23,13 @@ public class SubjectListAction extends Action{
 			return "main/login-in.jsp";
 		}
 
-		//学校を取得
-		School school=teacher.getSchool();
 
-		SubjectDao dao=new SubjectDao();
-		//対象の学校に対する科目一覧
-		List<Subject> subjectlist=dao.filter(school);
 
-		request.setAttribute("subjectList", subjectlist);
-		return "../main/subject_list.jsp";
+
+
+		request.setAttribute("teacher", teacher);
+		return "../main/subject_create_done.jsp";
 
 	}
-}
 
+}

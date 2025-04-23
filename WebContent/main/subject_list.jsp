@@ -40,7 +40,7 @@
 
     <!-- 新規登録 -->
       <div class="px-4 mb-3 text-end" style="padding-left:90%; ">
-        <a href="#" class="btn" >新規登録</a>
+        <a href="../scoremanager.main/SubjectCreate.action" class="btn" >新規登録</a>
       </div>
 
       <div class="px-4">
