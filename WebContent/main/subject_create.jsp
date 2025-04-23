@@ -36,7 +36,7 @@
     <div class="title-area">科目情報登録</div>
 
 		<div>
-			<form action="SubjectCreateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager.main/SubjectCreateExecute.action" method="post" style="margin-left: 10px;">
 				<p>
 				科目コード<br>
 				<input type="text" name="cd" maxlength="3" placeholder="科目コードを入力してください"
