@@ -10,6 +10,7 @@ import java.util.List;
 import bean.ClassNum;
 import bean.School;
 
+//全件取得
 public class ClassNumDao {
 
     private Dao dao;
@@ -44,4 +45,26 @@ public class ClassNumDao {
 
         return list;
     }
+
+
+public List<String> filter(School school) throws Exception {
+    List<String> list = new ArrayList<>();
+
+    String sql = "SELECT DISTINCT CLASS_NUM FROM CLASS_NUM WHERE SCHOOL_CD = ? ORDER BY CLASS_NUM";
+    try (Connection conn = dao.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setString(1, school.getCd());
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            list.add(rs.getString("CLASS_NUM"));
+        }
+
+        rs.close();
+    }
+
+    return list;
 }
+}
+
