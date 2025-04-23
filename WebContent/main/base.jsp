@@ -77,7 +77,7 @@
   <h1>得点管理システム</h1>
   <div class="user-info">
     <c:choose>
-            <c:when test="${not empty sessionScope.userName}">
+           <c:when test="${not empty sessionScope.userName }">
                 ${sessionScope.userName} 様　
                 <a href="../scoremanager.main/LogoutAction">ログアウト</a>
             </c:when>
