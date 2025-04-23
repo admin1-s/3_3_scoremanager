@@ -1,10 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="/main/base.jsp">
-  <c:param name="title">得点管理システム-学生一覧</c:param>
-  <c:param name="content">
-	<section class="me-4"  style="margin-left: 10px;">
-    	<h2  class="h3 mb-3 fw-bold bg-secondary bg-opacity-10 py-2 px-4">科目情報登録</h2>
+
+
+<jsp:include page="../tool/header.jsp" />
+<jsp:include page="../main/menu.jsp" />
+
+<style>
+    .content-area {
+        margin-left: 1px;
+        padding: 30px;
+        width:100%;
+    }
+
+    .title-area {
+        background-color: #eeeeee;
+        padding: 15px 30px;
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .btn {
+  		padding: 5px 10px; /* 内側の余白設定 */
+  		border-radius: 12px; /* 要素の角を丸くする */
+  		background-color: #0000ff; /* 背景色指定 */
+  		text-decoration: none; /* aタグの下線を非表示に */
+  		color: #fff; /* 文字色 */
+  		font-size: 15px; /* フォントサイズ */
+	}
+
+
+</style>
+
+<div class="content-area">
+    <div class="title-area">科目情報登録</div>
 
 		<div>
 			<form action="subject_create" method="post" style="margin-left: 10px;">
@@ -18,19 +47,13 @@
 			 	 style="width:100%; " required>
 			 	</p>
 
-			 	<p><input type="submit" value="登録"
-           		 style="padding:5px 15px; font-size:14px; margin-top:10px;"></p>
+			 	<p><input type="submit" value="登録" class="btn"></p>
 			</form>
 
 			<a href="../scoremanager.main/SubjectList.action" style="margin-left: 10px;">戻る</a>
 		</div>
 
+</div>
 
 
-    </section>
-
-
-    <jsp:include page="../tool/footer.jsp" />
-
-  </c:param>
-</c:import>
+<jsp:include page="../tool/footer.jsp" />

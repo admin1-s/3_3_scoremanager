@@ -20,6 +20,15 @@
         border-bottom: 1px solid #ccc;
     }
 
+	.table{
+	width: 100%;
+    border-spacing: 0;
+}
+
+	.table th,.table td{
+    border-bottom: 1px solid #000;
+    padding: 10px;
+}
 
 
 </style>
@@ -30,20 +39,17 @@
     </div>
 
     <!-- 新規登録 -->
-      <div class="px-4 mb-3 text-end" style="margin-left: auto;">
-        <a href="#" class="btn btn-outline-primary" >新規登録</a>
+      <div class="px-4 mb-3 text-end" style="padding-left:90%; ">
+        <a href="#" class="btn" >新規登録</a>
       </div>
 
       <div class="px-4">
-        	<table class="table table-bordered table-hover table-striped align-middle">
-              <thead class="table-light">
+        	<table class="table" >
                 <tr>
-                  <th>科目コード</th>
-                  <th>科目名</th>
+                  <th align=left>科目コード</th>
+                  <th align=left>科目名</th>
                   <th></th>
                 </tr>
-              </thead>
-              <tbody>
                 <c:forEach var="subject" items="${subjectList}">
                   <tr>
                     <td>${subject.cd}</td>
@@ -54,7 +60,6 @@
                     </td>
                   </tr>
                 </c:forEach>
-              </tbody>
             </table>
        </div>
 </div>
