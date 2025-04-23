@@ -3,7 +3,7 @@
 <div class="menu">
     <nav>
     <a href="../main/index.jsp">メニュー</a>
-    <a href="../scoremanager.main/studentlist3">学生管理</a>
+    <a href="<%= request.getContextPath() %>/main?action=StudentListAction">学生管理</a>
     <a href="#">成績管理</a>
     <a href="../main/seisekitoroku.jsp">　成績登録</a>
     <a href="../main/seisekisansyou.jsp">　成績参照</a>

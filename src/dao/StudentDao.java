@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.School;
 import bean.Student;
 
 public class StudentDao extends Dao {
@@ -138,4 +139,18 @@ public class StudentDao extends Dao {
   		 con.close();
   		 return line;
   	}
+
+
+  	public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception {
+  	    return search(entYear, classNum, isAttend);
+  	}
+
+  	public List<Student> filter(School school, int entYear, boolean isAttend) throws Exception {
+  	    return search(entYear, null, isAttend);
+  	}
+
+  	public List<Student> filter(School school, boolean isAttend) throws Exception {
+  	    return search(null, null, isAttend);
+  	}
+
 }
