@@ -111,7 +111,7 @@
 
 
 
-<form action="StidentSearch.action" method="post">
+<form action="StudentSearch.action" method="post">
 
         <div class="form-container">
         <div class="form-group">
@@ -120,7 +120,7 @@
 
             <div class="form-group">
                 <label>学生番号</label>
-                <input type="text">
+                <input type="text" name="aaa" required>
             </div>
 
             <div class="form-group">
