@@ -19,8 +19,6 @@ public class SubjectListAction extends Action{
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
 
-		System.out.println("execute通りました");
-
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher) session.getAttribute("teacher");
 

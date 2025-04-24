@@ -55,8 +55,14 @@
                     <td>${subject.cd}</td>
                     <td>${subject.name}</td>
                     <td class="text-center">
-                      <a href="">変更</a>
-                      <a href="">削除</a>
+                    	<form action="../scoremanager.main/SubjectUpdate.action" method="post" style="display:inline ; margin-right:10px;">
+                      		<input type="hidden" name="cd" value="${subject.cd }"/>
+                      		<input type="submit" value="変更"/>
+                      	</form>
+                      	<form action="../scoremanager.main/SubjectDelete.action" method="post" style="display:inline">
+                      		<input type="hidden" name="cd" value="${subject.cd }"/>
+                      		<input type="submit" value="削除"/>
+                      	</form>
                     </td>
                   </tr>
                 </c:forEach>

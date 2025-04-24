@@ -19,9 +19,31 @@ public class SubjectDao extends Dao{
 		st.setString(1,cd);
 		ResultSet rs = st.executeQuery();
 
-		while (rs.next()){
+		while(rs.next()){
 			s.setCd(rs.getString("cd"));
 			s.setName(rs.getString("name"));
+			s.setSchool(school);
+		}
+
+		st.close();
+		con.close();
+
+		return s;
+	}
+
+	public Subject findByCd(String cd) throws Exception{
+		Subject s=new Subject();
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from subject where cd=?");
+		st.setString(1,cd);
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()){
+			s.setCd(rs.getString("cd"));
+			s.setName(rs.getString("name"));
+
+			School school=new School();
+			school.setCd(rs.getString("school_cd"));
 			s.setSchool(school);
 		}
 
@@ -67,6 +89,20 @@ public class SubjectDao extends Dao{
 
 		return  result>0;
 
+	}
+
+	public boolean update(Subject subject)throws Exception{
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update subject set name=? where cd=? and school_cd=?");
+		st.setString(1, subject.getName());
+		st.setString(2, subject.getCd());
+		st.setString(3, subject.getSchool().getCd());
+		int result=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return result>0;
 	}
 
 	public boolean delete(Subject subject){

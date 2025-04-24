@@ -23,14 +23,25 @@ public class SubjectCreateExecuteAction extends Action{
 		String name=request.getParameter("name");
 
 		Subject subject=new Subject();
-		subject.setCd(cd);
-		System.out.println(cd);
-		subject.setName(name);
-		System.out.println(name);
-		subject.setSchool(teacher.getSchool());
-		System.out.println(teacher.getSchool());
-
 		SubjectDao dao=new SubjectDao();
+
+		//3文字かチェック
+		if (cd == null || cd.length() != 3){
+			request.setAttribute("error", "科目コードは3文字で入力してください");
+			return "SubjectCreate.action";
+		}
+
+		Subject existing=dao.findByCd(cd);
+		//既に科目コードが存在している場合
+		if (existing.getCd() != null){
+			request.setAttribute("error", "科目コードが重複しています");
+			return "SubjectCreate.action";
+		}
+
+		subject.setCd(cd);
+		subject.setName(name);
+		subject.setSchool(teacher.getSchool());
+
 		dao.save(subject);
 
 		return "../main/subject_create_done.jsp";
