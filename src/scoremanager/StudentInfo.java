@@ -1,4 +1,4 @@
-package scoremanager.main;
+package scoremanager;
 
 import java.io.IOException;
 import java.util.ArrayList;

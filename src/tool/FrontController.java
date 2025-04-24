@@ -1,6 +1,7 @@
 package tool;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,29 +15,19 @@ public class FrontController extends HttpServlet {
     public void doPost(
         HttpServletRequest request, HttpServletResponse response
     ) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         try {
-            String path = request.getServletPath().substring(1);
-            System.out.println(path);
-            String name = path.replace(".a", "A").replace('/', '.');
-
-            System.out.println("★ servlet path ->"+request.getServletPath());
-			System.out.println("★ class name ->"+name);
-
-            Action action = (Action) Class.forName(name)
+            String path = request.getServletPath().substring(1); // 例: "student/StudentList.action"
+            String name = path.replace(".action", "Action").replace("/", ".");
+            Action action = (Action)Class.forName(name)
                 .getDeclaredConstructor().newInstance();
 
-            String view = action.execute(request, response);
-            System.out.println(view);
-
-            request.getRequestDispatcher(view).forward(request, response);
-
+            String url = action.execute(request, response);
+            request.getRequestDispatcher(url)
+                .forward(request, response);
         } catch (Exception e) {
-        	e.printStackTrace();
-        	request.getRequestDispatcher("/main/error.jsp").forward(request, response);
-			System.out.println(e);
+            e.printStackTrace(out);
         }
-
-
     }
 
     public void doGet(

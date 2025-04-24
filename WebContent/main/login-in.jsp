@@ -5,7 +5,7 @@
 <body>
 <div class="login-container">
     <div class="head">ログイン</div>
-    <form action="../scoremanager.main/Login.action" method="post">
+    <form action="../scoremanager/Login.action" method="post">
         <input type="text" name="id" class="login-input" placeholder="ID" value="admin" required />
 		<input type="password" name="password" class="login-input" placeholder="パスワード" required />
         <div class="remember-me">
