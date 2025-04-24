@@ -121,36 +121,42 @@ public class StudentDao extends Dao {
         return list;
     }
 
-  //学生を追加するメソッド
-  	public int insert (Student student) throws Exception {
-  		 Connection con=getConnection();
+    // 学生を追加するメソッド
+    public int insert(Student student) throws Exception {
+        Connection con = getConnection();
 
-  		PreparedStatement st = con.prepareStatement(
-  		        "INSERT INTO STUDENT (ENT_YEAR, NO, NAME, CLASS_NUM, IS_ATTEND) VALUES (?, ?, ?, ?, ?)"
-  		    );
-  		   st.setInt(1, student.getEntYear());
-  		   st.setString(2, student.getNo());
-  		   st.setString(3, student.getName());
-  		   st.setString(4, student.getClassNum());
-  		   st.setString(5, student.isAttend() ? "TRUE" : "FALSE");
-  		 int line=st.executeUpdate();
+        PreparedStatement st = con.prepareStatement(
+            "INSERT INTO STUDENT (ENT_YEAR, NO, NAME, CLASS_NUM, IS_ATTEND) VALUES (?, ?, ?, ?, ?)"
+        );
+        st.setInt(1, student.getEntYear());
+        st.setString(2, student.getNo());
+        st.setString(3, student.getName());
+        st.setString(4, student.getClassNum());
+        st.setString(5, student.isAttend() ? "TRUE" : "FALSE");
 
-  		 st.close();
-  		 con.close();
-  		 return line;
-  	}
+        int line = st.executeUpdate();
 
+        st.close();
+        con.close();
+        return line;
+    }
 
-  	public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception {
-  	    return search(entYear, classNum, isAttend);
-  	}
+    // 新規追加：Schoolを使わない filter メソッド
+    public List<Student> filter(Integer entYear, String classNum, Boolean isAttend) throws Exception {
+        return search(entYear, classNum, isAttend);
+    }
 
-  	public List<Student> filter(School school, int entYear, boolean isAttend) throws Exception {
-  	    return search(entYear, null, isAttend);
-  	}
+    // 既存の School パラメータを含む filter メソッド（未使用でも一応残す）
+    public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception {
+        return search(entYear, classNum, isAttend);
+    }
 
-  	public List<Student> filter(School school, boolean isAttend) throws Exception {
-  	    return search(null, null, isAttend);
-  	}
+    public List<Student> filter(School school, int entYear, boolean isAttend) throws Exception {
+        return search(entYear, null, isAttend);
+    }
+
+    public List<Student> filter(School school, boolean isAttend) throws Exception {
+        return search(null, null, isAttend);
+    }
 
 }
