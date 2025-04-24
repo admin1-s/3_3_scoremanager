@@ -22,6 +22,7 @@ public class LoginAction extends Action {
             TeacherDao dao = new TeacherDao();
             Teacher teacher = dao.search(id, password); // ← ここでDB接続エラーが起こる可能性あり
 
+            //消さないで by藤川（消すなら要相談）
             SchoolDao sdao=new SchoolDao();
             School school=sdao.get(teacher.getSchool_cd());
             teacher.setSchool(school);
