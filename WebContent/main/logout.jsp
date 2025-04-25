@@ -81,6 +81,7 @@
     <div class="title">ログアウト</div>
     <div class="message">ログアウトしました</div>
     <div class="link"><a href="../main/login-in.jsp">ログイン</a></div>
+    <div class="link"><a href="../main/index.jsp">メニュー画面へ</a></div>
 </div>
 
 <div class="footer">
