@@ -3,35 +3,51 @@ package bean;
 import java.io.Serializable;
 
 public class Test implements Serializable{
+<<<<<<< HEAD
 	private String student_no;
 	private String subject_cd;
 	private String school_cd;
+=======
+	private Student student;
+	private Subject subject;
+	private School school;
+>>>>>>> branch 'master' of https://github.com/admin1-s/3_3_scoremanager.git
 	private int no;
 	private int point;
-	private String class_num;
+	private String classnum;
 
-    public String getStudentNo() {
-        return student_no;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentNo(String student_no) {
-        this.student_no = student_no;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
+<<<<<<< HEAD
     public String getSubjectNo() {
         return subject_cd;
+=======
+    public Subject getSubject() {
+        return subject;
+>>>>>>> branch 'master' of https://github.com/admin1-s/3_3_scoremanager.git
     }
 
+<<<<<<< HEAD
     public void setSubjectNo(String subject_cd) {
         this.subject_cd = subject_cd;
+=======
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+>>>>>>> branch 'master' of https://github.com/admin1-s/3_3_scoremanager.git
     }
 
-    public String getSchoolCd() {
-        return school_cd;
+    public School getSchool() {
+        return school;
     }
 
-    public void setSchoolCd(String school_cd) {
-        this.school_cd = school_cd;
+    public void setSchoolCd(School school) {
+        this.school= school;
     }
 
     public int getNo() {
@@ -51,10 +67,10 @@ public class Test implements Serializable{
     }
 
     public String getClassNum() {
-        return class_num;
+        return classnum;
     }
 
-    public void setClassNum(String class_num) {
-        this.class_num = class_num;
+    public void setClassNum(String classnum) {
+        this.classnum = classnum;
     }
 }
