@@ -32,6 +32,10 @@ public class SubjectDao extends Dao{
 	}
 
 	public List<Subject> filter(School school)throws Exception{
+		if (school == null) {
+	        throw new IllegalArgumentException("school is null");
+	    }
+
 		List<Subject> list=new ArrayList<>();
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("select * from subject where school_cd=?");
