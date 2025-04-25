@@ -9,18 +9,18 @@
 
     <div class="card-container">
         <div class="card red">
-            <h3>② 学生管理</h3>
+            <h3>学生管理</h3>
             <a href="../scoremanager.main/StudentList.action">学生管理</a>
         </div>
 
         <div class="card green">
-            <h3>③ 成績管理</h3>
-            <a href="../main/seisekitoroku.jsp">④ 成績登録</a>
-            <a href="gradeView.jsp">⑤ 成績参照</a>
+            <h3>成績管理</h3>
+            <a href="../main/seisekitoroku.jsp">成績登録</a>
+            <a href="gradeView.jsp">成績参照</a>
         </div>
 
         <div class="card blue">
-            <h3>⑥ 科目管理</h3>
+            <h3>科目管理</h3>
             <a href="../scoremanager/SubjectList.action">科目管理</a>
         </div>
     </div>
