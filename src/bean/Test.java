@@ -10,20 +10,11 @@ public class Test implements Serializable{
 	private int point;
 	private String classnum;
 
-
     public Student getStudent() {
         return student;
     }
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-
-    public Subject getSubject() {
-        return subject;
-    }
-    public void setSubject(Subject subject) {
-        this.subject = subject;
     }
 
 
@@ -34,6 +25,13 @@ public class Test implements Serializable{
         this.school= school;
     }
 
+
+    public Subject getSubject() {
+        return subject;
+    }
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
 
     public int getNo() {
         return no;
@@ -50,12 +48,11 @@ public class Test implements Serializable{
         this.point = point;
     }
 
-
     public String getClassNum() {
         return classnum;
     }
+
     public void setClassNum(String classnum) {
         this.classnum = classnum;
     }
 }
-//
