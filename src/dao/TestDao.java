@@ -5,10 +5,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Test;
+import bean.School;
 import bean.Student;
 import bean.Subject;
-import bean.School;
+import bean.Test;
 
 
 public class TestDao extends Dao{
@@ -19,7 +19,7 @@ public class TestDao extends Dao{
 
 		con.close();
 		}
-	}
+
 
 //filter
 public List<Subject> filter(School school)throws Exception{
@@ -41,5 +41,5 @@ public List<Subject> filter(School school)throws Exception{
 	con.close();
 
 	return list;
-
+}
 }
