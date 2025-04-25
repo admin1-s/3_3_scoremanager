@@ -41,9 +41,9 @@
 
 	.btn-1{
 	padding: 1px 4px;
+	margin-right: 10%;
   	border-radius: 8px;
   	background-color: #00bfff;
-  	text-decoration: none;
   	color: #fff;
   	font-size: 15px;
 }
@@ -52,7 +52,6 @@
 	padding: 1px 4px;
   	border-radius: 8px;
   	background-color: #dc143c;
-  	text-decoration: none;
   	color: #fff;
   	font-size: 15px;
 

@@ -25,12 +25,11 @@ public class SubjectListAction extends Action{
 		//未ログインの時
 		if (teacher == null){
 			System.out.println("teacher is null.");
-			return "../main/login-in.jsp";
+			return "main/login-in.jsp";
 		}
 
 		//学校を取得
 		School school=teacher.getSchool();
-
 
 		SubjectDao dao=new SubjectDao();
 		//対象の学校に対する科目一覧

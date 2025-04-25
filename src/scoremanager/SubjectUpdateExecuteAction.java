@@ -1,4 +1,4 @@
-package scoremanager.main;
+package scoremanager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +8,7 @@ import bean.Teacher;
 import dao.SubjectDao;
 import tool.Action;
 
-public class SubjectDeleteExecuteAction extends Action{
+public class SubjectUpdateExecuteAction extends Action{
 
 	@Override
 	public String execute(
@@ -28,9 +28,16 @@ public class SubjectDeleteExecuteAction extends Action{
 
 		SubjectDao dao=new SubjectDao();
 
-		dao.delete(subject);
+		Subject existing=dao.findByCd(cd);
+		//科目コードがなくなっている場合
+		if (existing.getCd() == null){
+			request.setAttribute("error", "科目コードが存在していません");
+			return "SubjectUpdate.action";
+		}
 
-		return "../main/subject_delete_done.jsp";
+		dao.update(subject);
+
+		return "../main/subject_update_done.jsp";
 	}
 
 }
