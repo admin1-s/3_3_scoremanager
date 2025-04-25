@@ -65,9 +65,10 @@
     footer {
       text-align: center;
       font-size: 12px;
-      color: #aaa;
+      background-color: #f0f0f0;
+      color: #333;
+      padding: 10px 0;
       margin-top: 40px;
-      clear: both;
     }
   </style>
 </head>

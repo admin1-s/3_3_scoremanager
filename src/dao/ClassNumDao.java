@@ -10,61 +10,77 @@ import java.util.List;
 import bean.ClassNum;
 import bean.School;
 
-//全件取得
-public class ClassNumDao {
+public class ClassNumDao extends Dao{
 
-    private Dao dao;
+	//取得したクラス番号、学生情報をもとにクラス情報を返すメソッド
+	public ClassNum get(String class_num, School school)throws Exception{
+		//クラス番号インスタンスを初期化
+		ClassNum classNum=new ClassNum();
+		Connection con=getConnection();
+		PreparedStatement st=null;
 
-    public ClassNumDao() {
-        this.dao = new Dao();
-    }
+		try{
+			st=con.prepareStatement("select * from class_num where class_num=? and school_cd=?");
+			st.setString(1, class_num);
+			st.setString(2, school.getCd());
+			ResultSet rSet=st.executeQuery();
+			//学校Daoを初期化
+			SchoolDao sDao=new SchoolDao();
+			if (rSet.next()){
+				//リザルトセットが存在する場合
+				//クラス番号インスタンスに検索結果をセット
+				classNum.setClassNum(rSet.getString("class_num"));
+				classNum.setSchoolCd(sDao.get(rSet.getString("school_cd")));
+			} else{
+				//リザルトセットが存在しない場合
+				//クラス番号インスタンスにnullをセット
+				classNum=null;
+			}
+		}catch (Exception e){
+			throw e;
+		}finally{
+			//プリペアードステートメントを閉じる
+			if (st !=null){
+				try{
+					st.close();
+				} catch (SQLException sqle){
+					throw sqle;
+				}
+			}
+			//コネクションを閉じる
+			if (con != null){
+				try{
+					con.close();
+				}catch (SQLException sqle){
+					throw sqle;
+				}
+			}
+		}
+		return classNum;
+	}
 
-    public List<ClassNum> findAll() throws Exception {
-        List<ClassNum> list = new ArrayList<>();
-        String sql = "SELECT * FROM CLASS_NUM";
 
-        try (Connection conn = dao.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+	//学校を指定してクラス番号の一覧を取得するメソッド
+	public List<String> filter(School school)throws Exception{
+		//リストを初期化
+		List<String> list=new ArrayList<>();
+		Connection con=getConnection();
 
-        	while (rs.next()) {
-        	    String schoolCd = rs.getString("SCHOOL_CD");
-        	    School school = new School();
-        	    school.setCd(schoolCd);
+		PreparedStatement st =con.prepareStatement("select class_num from class_num where school_cd=? order by class_num");
+		st.setString(1, school.getCd());
+		ResultSet rSet=st.executeQuery();
 
-        	    ClassNum classNum = new ClassNum();
-        	    classNum.setSchoolCd(school); // ここは ClassNum の setter
-        	    classNum.setClassNum(rs.getString("CLASS_NUM"));
-        	    list.add(classNum);
-        	}
+		//リザルトセットを全権走査
+		while (rSet.next()){
+			//リストにクラス番号を追加
+			list.add(rSet.getString("class_num"));
+		}
+		//プリペアードステートメントを閉じる
+		st.close();
+		//コネクションを閉じる
+		con.close();
 
+		return list;
+	}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return list;
-    }
-
-
-public List<String> filter(School school) throws Exception {
-    List<String> list = new ArrayList<>();
-
-    String sql = "SELECT DISTINCT CLASS_NUM FROM CLASS_NUM WHERE SCHOOL_CD = ? ORDER BY CLASS_NUM";
-    try (Connection conn = dao.getConnection();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-        pstmt.setString(1, school.getCd());
-        ResultSet rs = pstmt.executeQuery();
-
-        while (rs.next()) {
-            list.add(rs.getString("CLASS_NUM"));
-        }
-
-        rs.close();
-    }
-
-    return list;
 }
-}
-

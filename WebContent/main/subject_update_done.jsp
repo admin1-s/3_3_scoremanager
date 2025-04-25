@@ -26,7 +26,7 @@
 	}
 
 	.done {
-		background-color: #3cb371;
+		background-color: #66cdaa;
 		margin-bottom: 100px;
 	}
 
