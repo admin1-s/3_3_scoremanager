@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Test implements Serializable{
 	private String student_no;
-	private String subject_no;
+	private String subject_cd;
 	private String school_cd;
 	private int no;
 	private int point;
@@ -19,11 +19,11 @@ public class Test implements Serializable{
     }
 
     public String getSubjectNo() {
-        return subject_no;
+        return subject_cd;
     }
 
-    public void setSubjectNo(String subject_no) {
-        this.subject_no = subject_no;
+    public void setSubjectNo(String subject_cd) {
+        this.subject_cd = subject_cd;
     }
 
     public String getSchoolCd() {
