@@ -141,6 +141,57 @@ public class StudentDao extends Dao {
         return line;
     }
 
+
+    public Student findByNo(String no) throws Exception {
+        Student s = null;
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("SELECT * FROM student WHERE no = ?");
+        st.setString(1, no);
+        ResultSet rs = st.executeQuery();
+
+        if (rs.next()) {
+            s = new Student();
+            s.setEntYear(rs.getInt("ENT_YEAR"));
+            s.setNo(rs.getString("NO"));
+            s.setName(rs.getString("NAME"));
+            s.setClassNum(rs.getString("CLASS_NUM"));
+            s.setAttend("TRUE".equalsIgnoreCase(rs.getString("IS_ATTEND")));
+
+            // Schoolを扱いたい場合だけ必要
+            School school = new School();
+            school.setCd(rs.getString("SCHOOL_CD")); // カラムが存在するなら
+            s.setSchool(school);
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return s;
+    }
+
+
+    public boolean update(Student student) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("UPDATE student SET name = ?, class_num = ? WHERE ent_year = ? AND no = ?");
+
+        // パラメータの設定
+        st.setString(1, student.getName());        // 名前の設定
+        st.setString(2, student.getClassNum());    // クラス番号の設定
+        st.setInt(3, student.getEntYear());        // 入学年の設定
+        st.setString(4, student.getNo());          // 学生番号の設定
+
+        // SQLの実行
+        int result = st.executeUpdate();
+
+        // リソースの解放
+        st.close();
+        con.close();
+
+        // 更新が成功したかどうかを返す
+        return result > 0;
+    }
+
     // 新規追加：Schoolを使わない filter メソッド
     public List<Student> filter(Integer entYear, String classNum, Boolean isAttend) throws Exception {
         return search(entYear, classNum, isAttend);
