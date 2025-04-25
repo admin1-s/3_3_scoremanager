@@ -1,4 +1,4 @@
-package scoremanager.main;
+package scoremanager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,15 +22,16 @@ public class LoginAction extends Action {
             TeacherDao dao = new TeacherDao();
             Teacher teacher = dao.search(id, password); // ← ここでDB接続エラーが起こる可能性あり
 
-            //消さないで by藤川（消すなら要相談）
-            SchoolDao sdao=new SchoolDao();
-            School school=sdao.get(teacher.getSchool_cd());
-            teacher.setSchool(school);
-
             if (teacher != null) {
+                // 学校情報を取得して teacher にセット
+                SchoolDao sdao = new SchoolDao();
+                School school = sdao.get(teacher.getSchool_cd());
+                teacher.setSchool(school);
+
                 session.setAttribute("teacher", teacher);
                 return "../main/index.jsp";
             }
+
 
             return "../main/login-error.jsp"; // 認証失敗
         } catch (Exception e) {

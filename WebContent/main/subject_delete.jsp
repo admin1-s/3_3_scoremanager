@@ -23,7 +23,7 @@
 	.btn {
   		padding: 1px 4px;
   		border-radius: 8px;
-  		background-color: red;
+  		background-color: #dc143c;
   		text-decoration: none;
   		color: #fff;
   		font-size: 15px;
@@ -45,7 +45,7 @@
 			<input type="submit" value="削除" class="btn">
 		</form>
 
-		<a href="../scoremanager.main/SubjectList.action" >戻る</a>
+		<a href="../scoremanager.main/SubjectList.action" style="color: #1e90ff;" >戻る</a>
 	</div>
 
 </div>

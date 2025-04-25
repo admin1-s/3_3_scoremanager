@@ -74,12 +74,12 @@
 <body>
 
 <header>
-  <h1>得点管理システム</h1>
-  <div class="user-info">
+    <h1>得点管理システム</h1>
+    <div class="user-info">
     <c:choose>
-           <c:when test="${not empty sessionScope.userName }">
-                ${sessionScope.userName} 様　
-                <a href="../scoremanager.main/LogoutAction">ログアウト</a>
+            <c:when test="${not empty teacher.id}">
+                ${teacher.name} 様　
+                <a href="../scoremanager/Logout.action">ログアウト</a>
             </c:when>
             <c:otherwise>
                 <a href="../main/login-in.jsp">ログイン</a>

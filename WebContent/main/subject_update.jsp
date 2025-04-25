@@ -53,7 +53,7 @@
 			 	<p><input type="submit" value="変更" class="btn"></p>
 			</form>
 
-			<a href="../scoremanager.main/SubjectList.action" style="margin-left: 10px;">戻る</a>
+			<a href="../scoremanager.main/SubjectList.action" style="margin-left: 10px; color: #1e90ff;">戻る</a>
 		</div>
 
 </div>

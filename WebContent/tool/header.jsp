@@ -108,7 +108,7 @@
     <c:choose>
             <c:when test="${not empty teacher.id}">
                 ${teacher.name} 様　
-                <a href="../scoremanager.main/Logout.action">ログアウト</a>
+                <a href="../scoremanager/Logout.action">ログアウト</a>
             </c:when>
             <c:otherwise>
                 <a href="../main/login-in.jsp">ログイン</a>

@@ -70,7 +70,7 @@
         成績参照
     </div>
 
-    <form action="TestRegist.action" method="post">
+    <form action="SubjectSearch.action" method="post">
         <div class="form-container">
         <div class="form-group">
         <p>科目情報</p>
@@ -111,7 +111,7 @@
 
 
 
-<form action="TestRegist.action" method="post">
+<form action="StudentSearch.action" method="post">
 
         <div class="form-container">
         <div class="form-group">
@@ -120,9 +120,7 @@
 
             <div class="form-group">
                 <label>学生番号</label>
-                <select name="StudentId">
-                    <option>----</option>
-                </select>
+                <input type="text" name="aaa" required>
             </div>
 
             <div class="form-group">
@@ -135,5 +133,3 @@
 </div>
         </form>
 </div>
-
-<jsp:include page="../tool/footer.jsp" />
