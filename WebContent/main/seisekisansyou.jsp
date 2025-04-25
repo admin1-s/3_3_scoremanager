@@ -133,3 +133,5 @@
 </div>
         </form>
 </div>
+
+<jsp:include page="../tool/footer.jsp" />
