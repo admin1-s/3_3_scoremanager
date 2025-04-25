@@ -21,10 +21,9 @@
     }
 
     .btn {
-  		padding: 3px 5px;
-  		border-radius: 12px;
+  		padding: 1px 4px;
+  		border-radius: 8px;
   		background-color: #00bfff;
-  		text-decoration: none;
   		color: #fff;
   		font-size: 15px;
 	}
@@ -36,21 +35,24 @@
     <div class="title-area">科目情報変更</div>
 
 		<div>
-			<form action="SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
 				<p>
 				科目コード<br>
-				<input type="text" name="cd" maxlength="3" placeholder="科目コードを入力してください"
-			 	style="width:100%; " readonly>
+				<input type="text" name="cd" value="${subject.cd }" style="width:100%; " readonly/>
 			 	</p>
+			 	<%String error=(String) request.getAttribute("error"); %>
+			 	<% if (error != null){ %>
+			 		<p class="error_massage" style="color: orange; font-size:13px;">※<%= error %></p>
+			 	<%} %>
 			 	<p>科目名<br>
-			 	<input type="text" name="name" maxlength="20" placeholder="科目名を入力してください"
-			 	 style="width:100%; " required>
+			 	<input type="text" name="name" maxlength="20" value="${subject.name }"
+			 	 style="width:100%; " required/>
 			 	</p>
 
 			 	<p><input type="submit" value="変更" class="btn"></p>
 			</form>
 
-			<a href="../scoremanager.main/SubjectList.action" style="margin-left: 10px;">戻る</a>
+			<a href="../scoremanager/SubjectList.action" style="margin-left: 10px; color: #1e90ff;">戻る</a>
 		</div>
 
 </div>

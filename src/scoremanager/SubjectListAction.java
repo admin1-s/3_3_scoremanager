@@ -31,7 +31,6 @@ public class SubjectListAction extends Action{
 		//学校を取得
 		School school=teacher.getSchool();
 
-
 		SubjectDao dao=new SubjectDao();
 		//対象の学校に対する科目一覧
 		List<Subject> subjectlist=dao.filter(school);

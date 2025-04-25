@@ -34,14 +34,13 @@
 </style>
 
 <div class="content-area">
-    <div class="title-area">科目情報登録</div>
+    <div class="title-area">科目情報削除</div>
 
 		<div class="done">
-			<h3 class="h3">登録が完了しました</h3>
+			<h3 class="h3">削除が完了しました</h3>
 		</div>
 
 		<div>
-			<a href="../scoremanager/SubjectCreate.action" style="margin-left: 10px;">戻る</a>
 			<a href="../scoremanager/SubjectList.action" style="margin-left: 10px;">科目一覧</a>
 		</div>
 
