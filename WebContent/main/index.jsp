@@ -10,7 +10,7 @@
     <div class="card-container">
         <div class="card red">
             <h3>学生管理</h3>
-            <a href="../scoremanager.main/StudentList.action">学生管理</a>
+            <a href="../scoremanager/StudentList.action">学生管理</a>
         </div>
 
         <div class="card green">
