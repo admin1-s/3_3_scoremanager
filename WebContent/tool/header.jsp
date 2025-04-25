@@ -102,6 +102,11 @@
 	}
 </style>
 
+<head>
+	<meta charset="UTF-8">
+	<title>得点管理システム</title>
+</head>
+
 <header>
     <h1>得点管理システム</h1>
     <div class="user-info">
