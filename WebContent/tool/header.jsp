@@ -121,5 +121,6 @@
         </c:choose>
     </div>
 </header>
+<main>
 
 <div class="wrapper">
