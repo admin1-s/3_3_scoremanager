@@ -21,8 +21,8 @@
     }
 
     .btn {
-  		padding: 3px 5px;
-  		border-radius: 12px;
+  		padding: 1px 4px;
+  		border-radius: 8px;
   		background-color: #00bfff;
   		text-decoration: none;
   		color: #fff;

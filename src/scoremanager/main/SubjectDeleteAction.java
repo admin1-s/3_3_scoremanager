@@ -7,7 +7,7 @@ import bean.Subject;
 import dao.SubjectDao;
 import tool.Action;
 
-public class SubjectUpdateAction extends Action{
+public class SubjectDeleteAction extends Action{
 
 	@Override
 	public String execute(
@@ -20,7 +20,7 @@ public class SubjectUpdateAction extends Action{
 
 		request.setAttribute("subject", subject);
 
-		return "../main/subject_update.jsp";
+		return "../main/subject_delete.jsp";
 
 	}
 }

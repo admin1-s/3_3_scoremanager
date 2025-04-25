@@ -105,7 +105,18 @@ public class SubjectDao extends Dao{
 		return result>0;
 	}
 
-	public boolean delete(Subject subject){
+	public boolean delete(Subject subject) throws Exception{
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("delete from subject where name=? and cd=? and school_cd=?");
+		st.setString(1, subject.getName());
+		st.setString(2, subject.getCd());
+		st.setString(3, subject.getSchool().getCd());
+		int result=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return result>0;
 
 	}
 
