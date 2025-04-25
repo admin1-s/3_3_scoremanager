@@ -35,7 +35,7 @@
     <div class="title-area">科目情報変更</div>
 
 		<div>
-			<form action="../scoremanager.main/SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
 				<p>
 				科目コード<br>
 				<input type="text" name="cd" value="${subject.cd }" style="width:100%; " readonly/>
@@ -52,7 +52,7 @@
 			 	<p><input type="submit" value="変更" class="btn"></p>
 			</form>
 
-			<a href="../scoremanager.main/SubjectList.action" style="margin-left: 10px; color: #1e90ff;">戻る</a>
+			<a href="../scoremanager/SubjectList.action" style="margin-left: 10px; color: #1e90ff;">戻る</a>
 		</div>
 
 </div>

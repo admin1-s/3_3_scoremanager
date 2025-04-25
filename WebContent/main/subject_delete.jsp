@@ -38,13 +38,13 @@
 	<div style="margin-left: 10px;">
 		<p style="font-size:18px;">「${subject.name} (${subject.cd}) 」を削除してもよろしいですか？</p>
 
-		<form action="../scoremanager.main/SubjectDeleteExecute.action" method="post">
+		<form action="../scoremanager/SubjectDeleteExecute.action" method="post">
 			<input type="hidden" name="cd" value="${subject.cd }"/>
 			<input type="hidden" name="name" value="${subject.name }"/>
 			<input type="submit" value="削除" class="btn">
 		</form>
 
-		<a href="../scoremanager.main/SubjectList.action" style="color: #1e90ff;" >戻る</a>
+		<a href="../scoremanager/SubjectList.action" style="color: #1e90ff;" >戻る</a>
 	</div>
 
 </div>

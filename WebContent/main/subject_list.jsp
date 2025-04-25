@@ -68,7 +68,7 @@
 
     <!-- 新規登録 -->
       <div class="create" style="padding-left:90%; ">
-        <a href="../scoremanager.main/SubjectCreate.action" class="create-btn" >新規登録</a>
+        <a href="../scoremanager/SubjectCreate.action" class="create-btn" >新規登録</a>
       </div>
 
       <div class="px-4">
@@ -83,11 +83,11 @@
                     <td>${subject.cd}</td>
                     <td>${subject.name}</td>
                     <td class="text-center">
-                    	<form action="../scoremanager.main/SubjectUpdate.action" method="post" style="display:inline ; margin-right:10px;">
+                    	<form action="../scoremanager/SubjectUpdate.action" method="post" style="display:inline ; margin-right:10px;">
                       		<input type="hidden" name="cd" value="${subject.cd }"/>
                       		<input type="submit" class="btn-1" value="変更"/>
                       	</form>
-                      	<form action="../scoremanager.main/SubjectDelete.action" method="post" style="display:inline">
+                      	<form action="../scoremanager/SubjectDelete.action" method="post" style="display:inline">
                       		<input type="hidden" name="cd" value="${subject.cd }"/>
                       		<input type="submit" class="btn-2" value="削除"/>
                       	</form>

@@ -41,8 +41,8 @@
 		</div>
 
 		<div>
-			<a href="../scoremanager.main/SubjectCreate.action" style="margin-left: 10px;">戻る</a>
-			<a href="../scoremanager.main/SubjectList.action" style="margin-left: 10px;">科目一覧</a>
+			<a href="../scoremanager/SubjectCreate.action" style="margin-left: 10px;">戻る</a>
+			<a href="../scoremanager/SubjectList.action" style="margin-left: 10px;">科目一覧</a>
 		</div>
 
 </div>
