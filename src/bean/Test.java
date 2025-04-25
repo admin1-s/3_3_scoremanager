@@ -3,35 +3,35 @@ package bean;
 import java.io.Serializable;
 
 public class Test implements Serializable{
-	private String student_no;
-	private String subject_no;
-	private String school_cd;
+	private Student student;
+	private Subject subject;
+	private School school;
 	private int no;
 	private int point;
-	private String class_num;
+	private String classnum;
 
-    public String getStudentNo() {
-        return student_no;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentNo(String student_no) {
-        this.student_no = student_no;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public String getSubjectNo() {
-        return subject_no;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjectNo(String subject_no) {
-        this.subject_no = subject_no;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
-    public String getSchoolCd() {
-        return school_cd;
+    public School getSchool() {
+        return school;
     }
 
-    public void setSchoolCd(String school_cd) {
-        this.school_cd = school_cd;
+    public void setSchoolCd(School school) {
+        this.school= school;
     }
 
     public int getNo() {
@@ -51,10 +51,10 @@ public class Test implements Serializable{
     }
 
     public String getClassNum() {
-        return class_num;
+        return classnum;
     }
 
-    public void setClassNum(String class_num) {
-        this.class_num = class_num;
+    public void setClassNum(String classnum) {
+        this.classnum = classnum;
     }
 }
