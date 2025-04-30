@@ -49,11 +49,11 @@
 			 	 style="width:100%; " required/>
 			 	</p>
 			 	<p>クラス<br>
-			 	<select readonly>
-  					<option name="class_num">${student.classNum }</option>
+			 	<select name="class_num" readonly>
+  					<option >${student.classNum }</option>
 				</select>
 			 	</p>
-			 	<p>在学中<input type="checkbox" name="is_attend"></p>
+			 	<p>在学中<input type="checkbox" name="is_attend" value="true"></p>
 
 			 	<p><input type="submit" value="変更" class="btn"></p>
 			</form>

@@ -196,7 +196,12 @@ public class StudentDao extends Dao {
 		st.setInt(4, student.getEntYear());
 		st.setString(5, student.getNo());
 		st.setString(6, student.getSchool().getCd());
+		System.out.println(student.getNo());
 		int result=st.executeUpdate();
+
+		System.out.println(result);
+
+		//ここでresultが0になっているため、更新されない
 
 		st.close();
 		con.close();
