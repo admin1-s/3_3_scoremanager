@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Student;
+import bean.Test;
 import bean.TestListStudent;
 
 public class TestListStudentDao extends Dao {
@@ -51,5 +52,61 @@ public class TestListStudentDao extends Dao {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public List<Test> searchByStudentNo(String studentNo, String schoolCd) throws Exception {
+        List<Test> list = new ArrayList<>();
+        try (
+            Connection con = getConnection();
+            PreparedStatement st = con.prepareStatement(
+                "SELECT * FROM test WHERE student_no = ? AND school_cd = ?"
+            )
+        ) {
+            st.setString(1, studentNo);
+            st.setString(2, schoolCd);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Test test = new Test();
+                    test.setStudentNo(rs.getString("student_no"));
+                    test.setSubjectNo(rs.getString("subject_cd"));
+                    test.setSchoolCd(rs.getString("school_cd"));
+                    test.setNo(rs.getInt("no"));
+                    test.setPoint(rs.getInt("point"));
+                    test.setClassNum(rs.getString("class_num"));
+                    list.add(test);
+                }
+            }
+        }
+        return list;
+    }
+
+    public List<Test> searchByCondition(int entYear, String classNum, String subjectCd, String schoolCd) throws Exception {
+        List<Test> list = new ArrayList<>();
+        try (
+            Connection con = getConnection();
+            PreparedStatement st = con.prepareStatement(
+                "SELECT * FROM test t JOIN student s ON t.student_no = s.no " +
+                "WHERE s.ent_year = ? AND s.class_num = ? AND t.subject_cd = ? AND t.school_cd = ?"
+            )
+        ) {
+            st.setInt(1, entYear);
+            st.setString(2, classNum);
+            st.setString(3, subjectCd);
+            st.setString(4, schoolCd);
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Test test = new Test();
+                    test.setStudentNo(rs.getString("student_no"));
+                    test.setSubjectNo(rs.getString("subject_cd"));
+                    test.setSchoolCd(rs.getString("school_cd"));
+                    test.setNo(rs.getInt("no"));
+                    test.setPoint(rs.getInt("point"));
+                    test.setClassNum(rs.getString("class_num"));
+                    list.add(test);
+                }
+            }
+        }
+        return list;
     }
 }
