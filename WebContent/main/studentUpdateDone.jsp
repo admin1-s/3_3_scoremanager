@@ -26,7 +26,7 @@
 	}
 
 	.done {
-		background-color: #66cdaa;
+		background-color: #3cb371;
 		margin-bottom: 100px;
 	}
 
@@ -34,14 +34,14 @@
 </style>
 
 <div class="content-area">
-    <div class="title-area">科目情報削除</div>
+    <div class="title-area">学生情報更新</div>
 
 		<div class="done">
-			<h3 class="h3">削除が完了しました</h3>
+			<h3 class="h3">更新が完了しました</h3>
 		</div>
 
 		<div>
-			<a href="../scoremanager/SubjectList.action" style="margin-left: 10px;">科目一覧</a>
+			<a href="../scoremanager/StudentList.action" style="margin-left: 10px;">学生一覧</a>
 		</div>
 
 </div>

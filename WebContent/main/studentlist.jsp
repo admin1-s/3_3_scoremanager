@@ -27,8 +27,9 @@
             <select class="form-select" name="f2">
               <option value="0">----------</option>
               <c:forEach var="num" items="${class_num_set}">
-                <option value="${num}" <c:if test="${num==f2}">selected</c:if>>${num}</option>
-              </c:forEach>
+					<%--現在のnumと選択されていたf2が一致していた場合selectedを追記 --%>
+					<option value="${num}" <c:if test="${num==f2}">selected</c:if>>${num}</option>
+				</c:forEach>
             </select>
           </div>
 

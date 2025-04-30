@@ -17,6 +17,14 @@ public class Test implements Serializable{
         this.student = student;
     }
 
+    public Subject getSubject() {
+        return subject;
+    }
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+
 
     public School getSchool() {
         return school;
@@ -26,12 +34,6 @@ public class Test implements Serializable{
     }
 
 
-    public Subject getSubject() {
-        return subject;
-    }
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
 
     public int getNo() {
         return no;
