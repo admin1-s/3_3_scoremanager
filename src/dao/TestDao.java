@@ -20,9 +20,9 @@ public class TestDao extends Dao{
 
         while (rs.next()) {
             Test tes = new Test();
-            tes.setStudentNo(rs.getString("STUDENT_NO"));
-            tes.setSubjectNo(rs.getString("SUBJECT_CD"));
-            tes.setSchoolCd(rs.getString("SCHOOL_CD"));
+            tes.setStudent(rs.getString("STUDENT_NO"));
+            tes.setSubject(rs.getString("SUBJECT_CD"));
+            tes.setSchool(rs.getString("SCHOOL_CD"));
             tes.setNo(rs.getInt("NO"));
             tes.setPoint(rs.getInt("POINT"));
             tes.setClassNum(rs.getString("CLASS_NUM"));
@@ -50,9 +50,9 @@ public class TestDao extends Dao{
 
 	    while (rs.next()) {
 	        Test test = new Test();
-	        test.setStudentNo(rs.getString("student_no"));
-	        test.setSubjectNo(rs.getString("subject_cd"));
-	        test.setSchoolCd(rs.getString("school_cd"));
+	        test.setStudent(rs.getString("student_no"));
+	        test.setSubject(rs.getString("subject_cd"));
+	        test.setSchool(rs.getString("school_cd"));
 	        test.setNo(rs.getInt("no"));
 	        test.setPoint(rs.getInt("point"));
 	        test.setClassNum(rs.getString("class_num"));
@@ -82,9 +82,9 @@ public class TestDao extends Dao{
 
 	    while (rs.next()) {
 	        Test test = new Test();
-	        test.setStudentNo(rs.getString("student_no"));
-	        test.setSubjectNo(rs.getString("subject_cd"));
-	        test.setSchoolCd(rs.getString("school_cd"));
+	        test.setStudent(rs.getString("student_no"));
+	        test.setSubject(rs.getString("subject_cd"));
+	        test.setSchool(rs.getString("school_cd"));
 	        test.setNo(rs.getInt("no"));
 	        test.setPoint(rs.getInt("point"));
 	        test.setClassNum(rs.getString("class_num"));
