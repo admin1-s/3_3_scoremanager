@@ -35,7 +35,7 @@
     <div class="title-area">学生情報変更</div>
 
 		<div>
-			<form action="../scoremanager/StudetUpdateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager/StudentUpdateExecute.action" method="post" style="margin-left: 10px;">
 				<p>
 				入学年度<br>
 				<input type="text" name="ent_year" value="${student.entYear }" style="width:100%; " readonly/>
@@ -58,7 +58,7 @@
 			 	<p><input type="submit" value="変更" class="btn"></p>
 			</form>
 
-			<a href="../scoremanager/SubjectList.action" style="margin-left: 10px; color: #1e90ff;">戻る</a>
+			<a href="../scoremanager/StudentList.action" style="margin-left: 10px; color: #1e90ff;">戻る</a>
 		</div>
 
 </div>

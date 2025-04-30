@@ -186,4 +186,22 @@ public class StudentDao extends Dao {
 		return s;
 	}
 
+    //藤川追加2
+    public boolean update(Student student)throws Exception{
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("update student set name=? and class_num=? and is_attend=? where ent_year=? and no=? and school_cd=? ");
+		st.setString(1, student.getName());
+		st.setString(2, student.getClassNum());
+		st.setBoolean(3, student.isAttend());
+		st.setInt(4, student.getEntYear());
+		st.setString(5, student.getNo());
+		st.setString(6, student.getSchool().getCd());
+		int result=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return result>0;
+	}
+
 }
