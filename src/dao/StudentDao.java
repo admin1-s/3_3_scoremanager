@@ -159,4 +159,31 @@ public class StudentDao extends Dao {
         return search(null, null, isAttend);
     }
 
+
+    //藤川追加
+    public Student findByNo(String no) throws Exception{
+		Student s=new Student();
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from student where no=?");
+		st.setString(1,no);
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()){
+			s.setNo(rs.getString("no"));
+			s.setName(rs.getString("name"));
+			s.setEntYear(rs.getInt("ent_year"));
+			s.setClassNum(rs.getString("class_num"));
+			s.setAttend(rs.getBoolean("is_attend"));
+
+			School school=new School();
+			school.setCd(rs.getString("school_cd"));
+			s.setSchool(school);
+		}
+
+		st.close();
+		con.close();
+
+		return s;
+	}
+
 }
