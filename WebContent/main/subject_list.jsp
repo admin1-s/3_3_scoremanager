@@ -13,12 +13,31 @@
     }
 
     .title-area {
-        background-color: #eeeeee;
-        padding: 15px 30px;
-        font-size: 20px;
-        font-weight: bold;
-        border-bottom: 1px solid #ccc;
+    	margin: 0 auto 2em;
+    	padding: 2em;
+    	background: none;
+    	border: 1px solid #ccc;
+    	position: relative;
     }
+
+    .title-area:after{
+    	background-color: #eee;
+ 	  	border: none;
+   		content: ''; /* 擬似要素にコンテンツなし */
+   		position: absolute;
+  	 	top: 7px;
+   		left: 7px;
+   		width: 100%;
+   		height: 100%;
+   		z-index: -1; /* 背景として後ろに表示 */
+    }
+
+    .title-area p{
+    	margin:0;
+    	font-size: 20px;
+        font-weight: bold;
+   }
+
 
 	.table{
 	width: 100%;
@@ -63,7 +82,7 @@
 
 <div class="content-area">
     <div class="title-area">
-        科目管理
+        <p>科目管理</p>
     </div>
 
     <!-- 新規登録 -->
