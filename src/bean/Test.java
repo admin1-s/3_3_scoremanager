@@ -25,16 +25,16 @@ public class Test implements Serializable{
     }
 
 
-	
+
     public School getSchool() {
         return school;
     }
-    public void setSchoolCd(School school) {
+    public void setSchool(School school) {
         this.school= school;
     }
 
-	
-	
+
+
     public int getNo() {
         return no;
     }
@@ -42,7 +42,7 @@ public class Test implements Serializable{
         this.no = no;
     }
 
-	
+
     public int getPoint() {
         return point;
     }

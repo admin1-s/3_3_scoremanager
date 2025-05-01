@@ -1,4 +1,5 @@
 package scoremanager;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +20,13 @@ public class StudentUpdateAction extends Action{
 		StudentDao dao=new StudentDao();
 		Student student=dao.findByNo(no);
 
+        // クラスの選択肢を取得
+        List<String> classList = dao.selectClassNums();
+        request.setAttribute("classList", classList);  // クラスリストをJSPに渡す
+
 		request.setAttribute("student", student);
 
-		return "../main/student_update.jsp";
+		return "../main/studentUpdate.jsp";
 
 	}
-
 }

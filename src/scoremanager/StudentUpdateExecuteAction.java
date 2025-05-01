@@ -10,35 +10,33 @@ import tool.Action;
 
 public class StudentUpdateExecuteAction extends Action{
 
-	@Override
-	public String execute(
-		HttpServletRequest request, HttpServletResponse response
-	)throws Exception{
-		request.setCharacterEncoding("UTF-8");
+		@Override
+	    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	        request.setCharacterEncoding("UTF-8");
 
-		String no=request.getParameter("no");
-		String name=request.getParameter("name");
-		int ent_year=Integer.parseInt(request.getParameter("ent_year"));
-		String class_num=request.getParameter("class_num");
-		String is_attend=request.getParameter("is_attend");
-		Boolean attend="true".equals(is_attend);
+	        // フォームから受け取るパラメータ
+	        int entYear = Integer.parseInt(request.getParameter("entYear"));  // ★追加
+	        String no = request.getParameter("studentNo");                    // ★追加
+	        String classNum = request.getParameter("classNum");
+	        String name = request.getParameter("studentName");
+	        boolean isAttend = request.getParameter("isAttend") != null;     // チェックボックス用
 
+	        // セッションから学校情報を取得（使っていないが念のため）
+	        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
 
-		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
+	        // 学生オブジェクトにセット
+	        Student student = new Student();
+	        student.setEntYear(entYear);
+	        student.setNo(no);
+	        student.setClassNum(classNum);
+	        student.setName(name);
+	        student.setAttend(isAttend);                 // ★在学情報も更新
+	        student.setSchool(teacher.getSchool());
 
-		Student student=new Student();
-		student.setNo(no);
-		student.setName(name);
-		student.setEntYear(ent_year);
-		student.setClassNum(class_num);
-		student.setAttend(attend);
-		System.out.println(is_attend);
-		student.setSchool(teacher.getSchool());
+	        // DAOを使って更新処理
+	        StudentDao dao = new StudentDao();
+	        dao.update(student);
 
-		StudentDao dao=new StudentDao();
-
-		dao.update(student);
-
-		return "../main/student_update_done.jsp";
+	        return "../main/studentUpdateDone.jsp";  // 更新完了ページに遷移
 	}
 }

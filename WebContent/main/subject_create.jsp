@@ -39,7 +39,7 @@
 				<p>
 				科目コード<br>
 				<input type="text" name="cd" maxlength="3" placeholder="科目コードを入力してください"
-			 	style="width:100%; " required>
+			 	style="margin-top:10px; margin-left:10px; width:100%; " required>
 			 	</p>
 				<%String error=(String) request.getAttribute("error"); %>
 			 	<% if (error != null){ %>
@@ -47,7 +47,7 @@
 			 	<%} %>
 			 	<p>科目名<br>
 			 	<input type="text" name="name" maxlength="20" placeholder="科目名を入力してください"
-			 	 style="width:100%; " required>
+			 	 style="margin-top:10px; margin-left:10px; width:100%; " required>
 			 	</p>
 
 			 	<p><input type="submit" value="登録" class="btn"></p>

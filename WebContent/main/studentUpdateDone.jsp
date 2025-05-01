@@ -26,7 +26,7 @@
 	}
 
 	.done {
-		background-color: #66cdaa;
+		background-color: #3cb371;
 		margin-bottom: 100px;
 	}
 
@@ -34,7 +34,7 @@
 </style>
 
 <div class="content-area">
-    <div class="title-area">科目情報更新</div>
+    <div class="title-area">学生情報更新</div>
 
 		<div class="done">
 			<h3 class="h3">更新が完了しました</h3>

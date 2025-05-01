@@ -38,7 +38,7 @@
 			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
 				<p>
 				科目コード<br>
-				<input type="text" name="cd" value="${subject.cd }" style="width:100%; " readonly/>
+				<input type="text" name="cd" value="${subject.cd }" style="margin-top:10px; margin-left:10px; width:100%; border: none;" readonly/>
 			 	</p>
 			 	<%String error=(String) request.getAttribute("error"); %>
 			 	<% if (error != null){ %>
@@ -46,7 +46,7 @@
 			 	<%} %>
 			 	<p>科目名<br>
 			 	<input type="text" name="name" maxlength="20" value="${subject.name }"
-			 	 style="width:100%; " required/>
+			 	 style="margin-top:10px; margin-left:10px; width:100%; " required/>
 			 	</p>
 
 			 	<p><input type="submit" value="変更" class="btn"></p>
