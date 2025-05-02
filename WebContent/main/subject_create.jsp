@@ -68,7 +68,7 @@
     </div>
 
 		<div>
-			<form action="../scoremanager/SubjectCreateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager/SubjectCreateExecute.action" method="post" style="margin-left: 10px; margin-right:10px; ">
 				<p>
 				科目コード<br>
 				<input type="text" name="cd" maxlength="3" placeholder="科目コードを入力してください"

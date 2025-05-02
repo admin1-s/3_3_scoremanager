@@ -68,7 +68,7 @@
     </div>
 
 		<div>
-			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px; margin-right:10px; ">
 				<p>
 				科目コード<br>
 				<input type="text" name="cd" value="${subject.cd }" style="margin-top:10px; margin-left:10px; width:100%; border: none;" readonly/>
