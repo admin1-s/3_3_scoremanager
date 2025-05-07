@@ -106,14 +106,19 @@ public class ClassNumDao extends Dao{
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("select * from class_num where school_cd=? order by class_num");
 		st.setString(1, school.getCd());
+
+		System.out.println(school.getCd());
+
 		ResultSet rs=st.executeQuery();
 
 		while (rs.next()){
 			ClassNum classNum=new ClassNum();
 			School sch=new School();
 			sch.setCd(rs.getString("school_cd"));
-			classNum.setSchoolCd(school);
+			System.out.println(rs.getString("school_cd"));
+			classNum.setSchool(school);
 			classNum.setClassNum(rs.getString("class_num"));
+			System.out.println(rs.getString("class_num"));
 
 			list.add(classNum);
 		}

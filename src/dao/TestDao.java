@@ -125,7 +125,8 @@ public List<Subject> filter(School school)throws Exception{
 		Test test=null;
 
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select * from test where student_no=? and subject_cd=? and school_cd=?");
+		PreparedStatement st=con.prepareStatement(
+			"select * from test where student_no=? and subject_cd=? and school_cd=?");
 		st.setString(1, studentNo);
 		st.setString(2, subjectCd);
 		st.setString(3, school.getCd());
@@ -153,40 +154,26 @@ public List<Subject> filter(School school)throws Exception{
 		return test;
 	}
 
-	public void save(Test test) throws Exception{
+	public boolean save(Test test) throws Exception{
 		Connection con=getConnection();
 		PreparedStatement st;
-		ResultSet rs;
 
-		//既存の成績があるか確認
-		st=con.prepareStatement("select * from test where student_no=? and subject_no and school_cd=?");
+		//新規挿入
+		st=con.prepareStatement(
+		"insert into test values(?, ?, ?, ?, ?, ?)");
 		st.setString(1, test.getStudent().getNo());
 		st.setString(2, test.getSubject().getCd());
 		st.setString(3, test.getSubject().getSchool().getCd());
-		rs=st.executeQuery();
+		st.setInt(4, test.getNo());
+		st.setInt(5, test.getPoint());
+		st.setString(6, test.getClassNum());
 
-		if (rs.next()){
-			//更新
-			st=con.prepareStatement(
-			"update test set point=? where student_no=? and subject_cd=? and school_cd=?");
-			st.setInt(1, test.getPoint());
-			st.setString(2, test.getStudent().getNo());
-			st.setString(3, test.getSubject().getCd());
-			st.setString(4, test.getSubject().getSchool().getCd());
-			st.executeUpdate();
+		int line=st.executeUpdate();
 
-
-		} else {
-			//新規挿入
-			st=con.prepareStatement(
-			"insert into test (student_no, subject_cd, school_cd, point) values(?, ?, ?, ?)");
-			st.setString(1, test.getStudent().getNo());
-			st.setString(2, test.getSubject().getCd());
-			st.setString(3, test.getSubject().getSchool().getCd());
-			st.setInt(4, test.getPoint());
-			st.executeUpdate();
-		}
 
 		st.close();
+		con.close();
+
+		return line>0;
 	}
 }

@@ -87,8 +87,8 @@
 		クラス：
 		<select name="classNum">
 			<option value="">--</option>
-			<c:forEach var="c" items="${classList}">
-				<option value="${c.class_num }" <c:if test="${c.class_num == selectedClass}">selected</c:if>>${c.class_num}</option>
+			<c:forEach var="c" items="${classList }">
+				<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == selectedClass}">selected</c:if>>${c.getClassNum()}</option>
 			</c:forEach>
 		</select>
 
@@ -96,16 +96,15 @@
 		<select name="subjectCd">
 			<option value="">--</option>
 			<c:forEach var="sub" items="${subjectList }">
-				<option value="${sub.cd }" <c:if test="${sub.cd ==selectedSubject }">selected</c:if>>${sub.name }</option>
+				<option value="${sub.getCd() }" <c:if test="${sub.getCd() ==selectedSubject }">selected</c:if>>${sub.getName() }</option>
 			</c:forEach>
 		</select>
 
 		回数：
 		<select name="count">
 			<option value="">--</option>
-			<c:forEach var="i" begin="1" end="10">
-				<option value="${i }" <c:if test="${i == selectedCount }">selected</c:if>>${i }</option>
-			</c:forEach>
+			<option value="1">1</option>
+			<option value="2">2</option>
 		</select>
 
 		<input type="submit" value="検索" />
@@ -130,10 +129,10 @@
 					<tr>
 						<td>${selectedYear }</td>
 						<td>${selectedClass }</td>
-						<td>${student.no }</td>
-						<td>${student.name }</td>
+						<td>${student.getNo() }</td>
+						<td>${student.getName() }</td>
 						<td>
-							<input type="number" name="score_${student.no }"
+							<input type="number" name="score_${student.getNo() }"
 							value="<c:forEach var='test' items='${testList }'> <c:if test='${test.student.no == student.no }'>${test.point}</c:if> </c:forEach>" min="0" max="100" required />
 						</td>
 					</tr>
@@ -144,7 +143,7 @@
 			<input type="hidden" name="entYear" value="${selectedYear }" />
 			<input type="hidden" name="classNum" value="${selectedClass }" />
 			<input type="hidden" name="subjectCd" value="${selectedSubject }" />
-			<input type="hidden" name="count" value="${selectedCount }" />
+			<input type="hidden" name="no" value="${selectedCount }" />
 
 			<input type="submit" value="登録して終了" />
 		</form>

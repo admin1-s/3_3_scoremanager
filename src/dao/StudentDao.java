@@ -234,7 +234,7 @@ public class StudentDao extends Dao {
     	List<Student> list=new ArrayList<>();
     	Connection con = getConnection();
         PreparedStatement st = con.prepareStatement(
-        		"select * from student where school_cd=? and class_no=? and ent_year=? order by no");
+        		"select * from student where school_cd=? and class_num=? and ent_year=? order by no");
         st.setString(1, school.getCd());
         st.setString(2, classNum);
         st.setInt(3, entYear);
@@ -245,7 +245,7 @@ public class StudentDao extends Dao {
         	Student s=new Student();
         	s.setNo(rs.getString("no"));
         	s.setName(rs.getString("name"));
-        	s.setClassNum(rs.getString("class_no"));
+        	s.setClassNum(rs.getString("class_num"));
         	s.setEntYear(rs.getInt("ent_year"));
         	s.setSchool(school);
         	list.add(s);
