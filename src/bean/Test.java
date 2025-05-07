@@ -57,4 +57,5 @@ public class Test implements Serializable{
     public void setClassNum(String classnum) {
         this.classnum = classnum;
     }
+
 }

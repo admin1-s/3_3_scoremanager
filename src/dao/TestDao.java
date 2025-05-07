@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.School;
+import bean.Student;
 import bean.Subject;
 import bean.Test;
 
@@ -119,4 +120,73 @@ public List<Subject> filter(School school)throws Exception{
 
 	return list;
 }
+
+	public Test getTest(String studentNo, String subjectCd, School school) throws Exception{
+		Test test=null;
+
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from test where student_no=? and subject_cd=? and school_cd=?");
+		st.setString(1, studentNo);
+		st.setString(2, subjectCd);
+		st.setString(3, school.getCd());
+
+		ResultSet rs=st.executeQuery();
+
+		if (rs.next()){
+			test=new Test();
+			test.setPoint(rs.getInt("point"));
+
+			Student s=new Student();
+			s.setNo(rs.getString("student_no"));
+			s.setSchool(school);
+			test.setStudent(s);
+
+			Subject sub=new Subject();
+			sub.setCd(rs.getString("subject_cd"));
+			sub.setSchool(school);
+			test.setSubject(sub);
+		}
+
+		rs.close();
+		st.close();
+
+		return test;
+	}
+
+	public void save(Test test) throws Exception{
+		Connection con=getConnection();
+		PreparedStatement st;
+		ResultSet rs;
+
+		//既存の成績があるか確認
+		st=con.prepareStatement("select * from test where student_no=? and subject_no and school_cd=?");
+		st.setString(1, test.getStudent().getNo());
+		st.setString(2, test.getSubject().getCd());
+		st.setString(3, test.getSubject().getSchool().getCd());
+		rs=st.executeQuery();
+
+		if (rs.next()){
+			//更新
+			st=con.prepareStatement(
+			"update test set point=? where student_no=? and subject_cd=? and school_cd=?");
+			st.setInt(1, test.getPoint());
+			st.setString(2, test.getStudent().getNo());
+			st.setString(3, test.getSubject().getCd());
+			st.setString(4, test.getSubject().getSchool().getCd());
+			st.executeUpdate();
+
+
+		} else {
+			//新規挿入
+			st=con.prepareStatement(
+			"insert into test (student_no, subject_cd, school_cd, point) values(?, ?, ?, ?)");
+			st.setString(1, test.getStudent().getNo());
+			st.setString(2, test.getSubject().getCd());
+			st.setString(3, test.getSubject().getSchool().getCd());
+			st.setInt(4, test.getPoint());
+			st.executeUpdate();
+		}
+
+		st.close();
+	}
 }

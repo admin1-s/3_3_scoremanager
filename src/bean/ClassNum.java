@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class ClassNum implements Serializable{
     private School school_cd;
     private String class_num;
+    private School school;
 
     public School getSchoolCd() {
         return school_cd;
@@ -21,9 +22,17 @@ public class ClassNum implements Serializable{
     public void setClassNum(String class_num) {
         this.class_num = class_num;
     }
-    
-    
-    
-    
-    
+
+    public School getSchool() {
+        return this.school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+
+
+
+
 }

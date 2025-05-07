@@ -56,6 +56,43 @@ public class StudentDao extends Dao {
         return list;
     }
 
+    //入学年度の一覧を取得(F)
+    public List<String> getEntYears() throws Exception{
+    	List<String> years=new ArrayList<>();
+    	Connection con=getConnection();
+    	PreparedStatement st=con.prepareStatement("select distinct ent_year from student order by ent_year");
+    	ResultSet rs=st.executeQuery();
+
+    	while (rs.next()){
+    		years.add("ent_year");
+    	}
+    	con.close();
+    	st.close();
+    	return years;
+    }
+
+    public List<Student> filterByClassAndYear(String entYear, String classNum) throws Exception{
+    	List<Student> list=new ArrayList<>();
+    	Connection con=getConnection();
+    	PreparedStatement st=con.prepareStatement("select * from student where ent_year=? and class_num=? order by no");
+    	st.setString(1, entYear);
+    	st.setString(2, classNum);
+    	ResultSet rs=st.executeQuery();
+    	while(rs.next()){
+    		Student s=new Student();
+    		s.setNo(rs.getString("no"));
+    		s.setEntYear(rs.getInt("ent_year"));
+    		s.setClassNum(rs.getString("class_num"));
+    		s.setName(rs.getString("name"));
+    		list.add(s);
+    	}
+
+    	con.close();
+    	st.close();
+
+    	return list;
+    }
+
     // クラス番号の一覧を取得
     public List<String> selectClassNums() throws Exception {
         List<String> list = new ArrayList<>();
@@ -192,6 +229,35 @@ public class StudentDao extends Dao {
         return result > 0;
     }
 
+    //指定された学校、クラス、入学年度に所属する学生一覧を取得するメソッド
+    public List<Student> getStudentList(School school, String classNum, int entYear) throws Exception{
+    	List<Student> list=new ArrayList<>();
+    	Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement(
+        		"select * from student where school_cd=? and class_no=? and ent_year=? order by no");
+        st.setString(1, school.getCd());
+        st.setString(2, classNum);
+        st.setInt(3, entYear);
+
+        ResultSet rs=st.executeQuery();
+
+        while (rs.next()){
+        	Student s=new Student();
+        	s.setNo(rs.getString("no"));
+        	s.setName(rs.getString("name"));
+        	s.setClassNum(rs.getString("class_no"));
+        	s.setEntYear(rs.getInt("ent_year"));
+        	s.setSchool(school);
+        	list.add(s);
+        }
+
+        rs.close();
+        st.close();
+
+        return list;
+
+    }
+
     // 新規追加：Schoolを使わない filter メソッド
     public List<Student> filter(Integer entYear, String classNum, Boolean isAttend) throws Exception {
         return search(entYear, classNum, isAttend);
@@ -211,53 +277,5 @@ public class StudentDao extends Dao {
     }
 
 
-    //藤川追加
-    public Student findByNo(String no) throws Exception{
-		Student s=new Student();
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select * from student where no=?");
-		st.setString(1,no);
-		ResultSet rs = st.executeQuery();
-
-		while(rs.next()){
-			s.setNo(rs.getString("no"));
-			s.setName(rs.getString("name"));
-			s.setEntYear(rs.getInt("ent_year"));
-			s.setClassNum(rs.getString("class_num"));
-			s.setAttend(rs.getBoolean("is_attend"));
-
-			School school=new School();
-			school.setCd(rs.getString("school_cd"));
-			s.setSchool(school);
-		}
-
-		st.close();
-		con.close();
-
-		return s;
-	}
-
-    //藤川追加2
-    public boolean update(Student student)throws Exception{
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("update student set name=? and class_num=? and is_attend=? where ent_year=? and no=? and school_cd=? ");
-		st.setString(1, student.getName());
-		st.setString(2, student.getClassNum());
-		st.setBoolean(3, student.isAttend());
-		st.setInt(4, student.getEntYear());
-		st.setString(5, student.getNo());
-		st.setString(6, student.getSchool().getCd());
-		System.out.println(student.getNo());
-		int result=st.executeUpdate();
-
-		System.out.println(result);
-
-		//ここでresultが0になっているため、更新されない
-
-		st.close();
-		con.close();
-
-		return result>0;
-	}
 
 }
