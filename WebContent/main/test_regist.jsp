@@ -10,63 +10,61 @@
     .content-area {
         margin-left: 1px;
         padding: 30px;
+        width:100%;
     }
 
     .title-area {
-        background-color: #eeeeee;
-        padding: 15px 30px;
-        font-size: 20px;
+    	position: relative;
+  		background: #eee;
+  		box-shadow: 0px 0px 0px 5px #eee;
+  		border: dashed 2px white;
+  		padding: 15px 30px;
+		color: #000000;
+    }
+
+    .title-area:after{
+    	position: absolute;
+  		content: '';
+  		left: -7px;
+		top: -7px;
+		border-width: 0 0 15px 15px;
+		border-style: solid;
+		border-color: #fff #fff #eee;
+		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    .title-area p{
+    	margin:0;
+    	font-size: 20px;
         font-weight: bold;
-        border-bottom: 1px solid #ccc;
-    }
+   }
 
-    .form-container {
-        background-color: #fff;
-        margin-top: 10px;
-        padding: 20px 30px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 20px;
-        border-bottom: 1px solid #ccc;
-    }
+   .search{
+   		font-size: 18px;
+		display: inline-block;
+		padding: 0.2em 0.5em 0.1em;
+		color: #0099ff;
+		border: none;
+		border-radius: 5px;
+		background: linear-gradient(
+    		-45deg,
+    		#ddeeff 25%,
+    		#c6e6fb 25%,
+    		#c6e6fb 50%,
+    		#ddeeff 50%,
+    		#ddeeff 75%,
+  			#c6e6fb 75%,
+   			#c6e6fb
+   		);
+    	background-size: 10px 10px;
+		cursor: pointer;
+	}
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .form-group label {
-        margin-bottom: 5px;
-        font-weight: bold;
-        font-size: 14px;
-    }
-
-    .form-group select {
-        padding: 5px 10px;
-        width: 160px;
-        font-size: 14px;
-    }
-
-    .btn-search {
-        background-color: #666;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 14px;
-        cursor: pointer;
-        height: 40px;
-        align-self: flex-end;
-    }
-
-    .btn-search:hover {
-        background-color: #444;
-    }
 </style>
 
 <div class="content-area">
     <div class="title-area">
-        成績管理
+       <p>成績管理</p>
     </div>
 
 	<!-- メッセージ表示 -->
@@ -76,45 +74,53 @@
 
 
 	<form action="TestRegist.action" method="post">
-		入学年度：
+		<div>
+		入学年度：<br>
 		<select name="entYear">
 			<option value="">--</option>
 			<c:forEach var="year" items="${yearList }">
 				<option value="${year }" <c:if test="${year == selectedYear}">selected</c:if>>${year}</option>
 			</c:forEach>
 		</select>
+		</div>
 
-		クラス：
+		<div>
+		クラス：<br>
 		<select name="classNum">
 			<option value="">--</option>
 			<c:forEach var="c" items="${classList }">
 				<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == selectedClass}">selected</c:if>>${c.getClassNum()}</option>
 			</c:forEach>
 		</select>
+		</div>
 
-		科目：
+		<div>
+		科目：<br>
 		<select name="subjectCd">
 			<option value="">--</option>
 			<c:forEach var="sub" items="${subjectList }">
 				<option value="${sub.getCd() }" <c:if test="${sub.getCd() ==selectedSubject }">selected</c:if>>${sub.getName() }</option>
 			</c:forEach>
 		</select>
+		</div>
 
-		回数：
+		<div>
+		回数：<br>
 		<select name="count">
 			<option value="">--</option>
 			<option value="1">1</option>
 			<option value="2">2</option>
 		</select>
+		</div>
 
-		<input type="submit" value="検索" />
+		<input type="submit" value="検索" class="search" />
 	</form>
 
 	<hr/>
 
 	<!-- 学生と成績入力欄 -->
 	<c:if test="${not empty subjectList }">
-		<h3>科目：${subjectName}（第${selectedCount }回）</h3>
+		<p>科目：${subjectName}（第${selectedCount }回）</p>
 		<form action="TestRegistDone.action" method="post">
 			<table border="1">
 				<tr>
@@ -133,7 +139,7 @@
 						<td>${student.getName() }</td>
 						<td>
 							<input type="number" name="score_${student.getNo() }"
-							value="<c:forEach var='test' items='${testList }'> <c:if test='${test.student.no == student.no }'>${test.point}</c:if> </c:forEach>" min="0" max="100" required />
+							value="<c:forEach var='test' items='${testList }'> <c:if test='${test.student.no == student.no }'>${test.point}</c:if> </c:forEach>" min="1" max="100" required />
 						</td>
 					</tr>
 				</c:forEach>
