@@ -25,13 +25,6 @@ public class StudentListAction extends Action {
         HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
 
-     // teacherがnullならログイン画面に戻す
-        if (teacher == null) {
-            request.setAttribute("message", "ログインしてください");
-            request.getRequestDispatcher("../main/login-in.jsp").forward(request, response);
-            return null;
-        }
-
         SchoolDao sdao = new SchoolDao();
         School school = new School();
 

@@ -85,7 +85,7 @@
                       </c:choose>
                     </td>
                     <td class="text-center">
-                      <a href="StudentUpdate.action?no=${student.no}">変更</a>
+                      <a href="http://localhost:8080/management_score/scoremanager/StudentUpdate.action?no=${student.no}">変更</a>
                     </td>
                   </tr>
                 </c:forEach>

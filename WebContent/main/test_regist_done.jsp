@@ -38,48 +38,32 @@
         font-weight: bold;
    }
 
-	.btn{
-	font-size: 15px;
-	display: inline-block;
-	padding: 0.2em 0.5em 0.1em;
-	color: #ff0000;
-	border: none;
-	border-radius: 5px;
-	background: linear-gradient(
-    	-45deg,
-    	#ffe4e1 25%,
-    	#ffd6d8 25%,
-    	#ffd6d8 50%,
-    	#ffe4e1 50%,
-    	#ffe4e1 75%,
-  		#ffd6d8 75%,
-   		#ffd6d8
-   	);
-    background-size: 10px 10px;
-	cursor: pointer;
+	.h3 {
+		text-align: center;
+		font-size: 15px;
+	}
 
-}
-
+	.done {
+		background-color: #3cb371;
+		margin-bottom: 100px;
+	}
 
 
 </style>
 
 <div class="content-area">
     <div class="title-area">
-    	<p>科目情報削除</p>
+    	<p>成績登録完了</p>
     </div>
 
-	<div style="margin-left: 10px;">
-		<p style="font-size:18px;">「${subject.name} (${subject.cd}) 」を削除してもよろしいですか？</p>
+		<div class="done">
+			<h3 class="h3">成績を登録しました</h3>
+		</div>
 
-		<form action="../scoremanager/SubjectDeleteExecute.action" method="post">
-			<input type="hidden" name="cd" value="${subject.cd }"/>
-			<input type="hidden" name="name" value="${subject.name }"/>
-			<input type="submit" value="削除" class="btn">
-		</form>
-
-		<a href="../scoremanager/SubjectList.action" style="color: #1e90ff;" >戻る</a>
-	</div>
+		<div>
+			<a href="../scoremanager/TestRegist.action">戻る</a>
+			<a href="" >成績参照</a>
+		</div>
 
 </div>
 

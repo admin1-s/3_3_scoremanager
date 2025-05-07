@@ -13,12 +13,30 @@
     }
 
     .title-area {
-        background-color: #eeeeee;
-        padding: 15px 30px;
-        font-size: 20px;
-        font-weight: bold;
-        border-bottom: 1px solid #ccc;
+    	position: relative;
+  		background: #eee;
+  		box-shadow: 0px 0px 0px 5px #eee;
+  		border: dashed 2px white;
+  		padding: 15px 30px;
+		color: #000000;
     }
+
+    .title-area:after{
+    	position: absolute;
+  		content: '';
+  		left: -7px;
+		top: -7px;
+		border-width: 0 0 15px 15px;
+		border-style: solid;
+		border-color: #fff #fff #eee;
+		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    .title-area p{
+    	margin:0;
+    	font-size: 20px;
+        font-weight: bold;
+   }
 
 	.h3 {
 		text-align: center;
@@ -26,7 +44,7 @@
 	}
 
 	.done {
-		background-color: #66cdaa;
+		background-color: #3cb371;
 		margin-bottom: 100px;
 	}
 
@@ -34,7 +52,9 @@
 </style>
 
 <div class="content-area">
-    <div class="title-area">科目情報削除</div>
+    <div class="title-area">
+    	<p>科目情報削除</p>
+    </div>
 
 		<div class="done">
 			<h3 class="h3">削除が完了しました</h3>

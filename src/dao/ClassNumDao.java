@@ -83,4 +83,47 @@ public class ClassNumDao extends Dao{
 		return list;
 	}
 
+	//クラス番号の取得
+	public List<ClassNum> getAllClassNums() throws Exception{
+		List<ClassNum> list=new ArrayList<>();
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from class_num order by class_num");
+		ResultSet rs=st.executeQuery();
+
+		while (rs.next()){
+			ClassNum c=new ClassNum();
+			c.setClassNum(rs.getString("class_num"));
+			list.add(c);
+		}
+		con.close();
+		st.close();
+
+		return list;
+	}
+
+	public List<ClassNum> getClassNum(School school) throws Exception{
+		List<ClassNum> list=new ArrayList<>();
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("select * from class_num where school_cd=? order by class_num");
+		st.setString(1, school.getCd());
+		ResultSet rs=st.executeQuery();
+
+		while (rs.next()){
+			ClassNum classNum=new ClassNum();
+			School sch=new School();
+			sch.setCd(rs.getString("school_cd"));
+			classNum.setSchoolCd(school);
+			classNum.setClassNum(rs.getString("class_num"));
+
+			list.add(classNum);
+		}
+
+		rs.close();
+		st.close();
+
+		return list;
+
+
+	}
+
 }

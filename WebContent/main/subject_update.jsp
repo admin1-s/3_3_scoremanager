@@ -13,32 +13,65 @@
     }
 
     .title-area {
-        background-color: #eeeeee;
-        padding: 15px 30px;
-        font-size: 20px;
-        font-weight: bold;
-        border-bottom: 1px solid #ccc;
+    	position: relative;
+  		background: #eee;
+  		box-shadow: 0px 0px 0px 5px #eee;
+  		border: dashed 2px white;
+  		padding: 15px 30px;
+		color: #000000;
     }
 
-    .btn {
-  		padding: 1px 4px;
-  		border-radius: 8px;
-  		background-color: #00bfff;
-  		color: #fff;
-  		font-size: 15px;
-	}
+    .title-area:after{
+    	position: absolute;
+  		content: '';
+  		left: -7px;
+		top: -7px;
+		border-width: 0 0 15px 15px;
+		border-style: solid;
+		border-color: #fff #fff #eee;
+		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    .title-area p{
+    	margin:0;
+    	font-size: 20px;
+        font-weight: bold;
+   }
+
+    .btn{
+	font-size: 15px;
+	display: inline-block;
+	padding: 0.2em 0.5em 0.1em;
+	color: #0099ff;
+	border: none;
+	border-radius: 5px;
+	background: linear-gradient(
+    	-45deg,
+    	#ddeeff 25%,
+    	#c6e6fb 25%,
+    	#c6e6fb 50%,
+    	#ddeeff 50%,
+    	#ddeeff 75%,
+  		#c6e6fb 75%,
+   		#c6e6fb
+   	);
+    background-size: 10px 10px;
+	cursor: pointer;
+}
 
 
 </style>
 
 <div class="content-area">
-    <div class="title-area">科目情報変更</div>
+    <div class="title-area">
+    	<p>科目情報変更</p>
+    </div>
 
 		<div>
-			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px;">
+			<form action="../scoremanager/SubjectUpdateExecute.action" method="post" style="margin-left: 10px; margin-right:10px; ">
 				<p>
 				科目コード<br>
-				<input type="text" name="cd" value="${subject.cd }" style="width:100%; " readonly/>
+				<input type="text" name="cd" value="${subject.cd }" style="margin-top:10px; margin-left:10px; width:100%; border: none;" readonly/>
 			 	</p>
 			 	<%String error=(String) request.getAttribute("error"); %>
 			 	<% if (error != null){ %>
@@ -46,7 +79,7 @@
 			 	<%} %>
 			 	<p>科目名<br>
 			 	<input type="text" name="name" maxlength="20" value="${subject.name }"
-			 	 style="width:100%; " required/>
+			 	 style="margin-top:10px; margin-left:10px; width:100%; " required/>
 			 	</p>
 
 			 	<p><input type="submit" value="変更" class="btn"></p>
