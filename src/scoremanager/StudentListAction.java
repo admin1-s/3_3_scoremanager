@@ -25,6 +25,12 @@ public class StudentListAction extends Action {
         HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
 
+        //未ログインの時
+      	if (teacher == null){
+      		System.out.println("teacher is null.");
+      		return "../main/login-in.jsp";
+      	}
+
         SchoolDao sdao = new SchoolDao();
         School school = new School();
 

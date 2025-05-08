@@ -25,7 +25,7 @@ public class SubjectListAction extends Action{
 		//未ログインの時
 		if (teacher == null){
 			System.out.println("teacher is null.");
-			return "main/login-in.jsp";
+			return "../main/login-in.jsp";
 		}
 
 		//学校を取得

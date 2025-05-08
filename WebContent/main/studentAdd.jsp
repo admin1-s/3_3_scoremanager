@@ -12,7 +12,6 @@
     	box-sizing: border-box;
 	}
 
-
     h2 {
         background-color: #eeeeee;
         padding: 15px 30px;
@@ -47,7 +46,6 @@
     input[type="submit"]:hover {
         background-color: #4169e1;
     }
-
 </style>
 
 <div class="content-area">
