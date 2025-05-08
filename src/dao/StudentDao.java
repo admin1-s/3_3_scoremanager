@@ -251,8 +251,8 @@ public class StudentDao extends Dao {
         	list.add(s);
         }
 
-        rs.close();
         st.close();
+        con.close();
 
         return list;
 
