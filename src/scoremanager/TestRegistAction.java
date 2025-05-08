@@ -35,8 +35,8 @@ public class TestRegistAction extends Action{
         List<Subject> subjectList=subjectDao.getSubjectList(school);
 
         int currentYear=java.time.Year.now().getValue();
-        int[] yearList=new int[6];
-        for (int i=0 ; i<6 ; i++){
+        int[] yearList=new int[10];
+        for (int i=0 ; i<10 ; i++){
         	yearList[i]=currentYear-i;
         }
 

@@ -216,9 +216,7 @@ public class TestDao extends Dao {
             st.executeUpdate();
         } else {
             // 挿入
-            st = con.prepareStatement(
-                "INSERT INTO test (student_no, subject_cd, school_cd, point) VALUES (?, ?, ?, ?)"
-            );
+            st = con.prepareStatement("INSERT INTO test (student_no, subject_cd, school_cd, point) VALUES (?, ?, ?, ?)");
             st.setString(1, test.getStudent().getNo());
             st.setString(2, test.getSubject().getCd());
             st.setString(3, test.getSubject().getSchool().getCd());

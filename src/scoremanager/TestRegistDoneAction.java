@@ -24,7 +24,9 @@ public class TestRegistDoneAction extends Action{
 
 		int entYear=Integer.parseInt(request.getParameter("entYear"));
 		String classNum=request.getParameter("classNum");
+		System.out.println(classNum);
 		String subjectCd=request.getParameter("subjectCd");
+		int No=Integer.parseInt(request.getParameter("no"));
 
 		StudentDao studentDao=new StudentDao();
 		List<Student> studentList=studentDao.getStudentList(school, classNum, entYear);
@@ -43,8 +45,10 @@ public class TestRegistDoneAction extends Action{
 				Subject sub=new Subject();
 				sub.setCd(subjectCd);
 				sub.setSchool(school);
+				test.setClassNum(classNum);
 				test.setSubject(sub);
 				test.setPoint(point);
+				test.setNo(No);
 
 				testDao.save(test);
 			}
