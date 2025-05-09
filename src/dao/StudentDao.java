@@ -210,13 +210,14 @@ public class StudentDao extends Dao {
 
     public boolean update(Student student) throws Exception {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("UPDATE student SET name = ?, class_num = ? WHERE ent_year = ? AND no = ?");
+        PreparedStatement st = con.prepareStatement("UPDATE student SET name = ?, class_num = ?, is_attend = ? WHERE ent_year = ? AND no = ?");
 
         // パラメータの設定
         st.setString(1, student.getName());        // 名前の設定
         st.setString(2, student.getClassNum());    // クラス番号の設定
-        st.setInt(3, student.getEntYear());        // 入学年の設定
-        st.setString(4, student.getNo());          // 学生番号の設定
+        st.setString(3, student.isAttend() ? "TRUE" : "FALSE");
+        st.setInt(4, student.getEntYear());        // 入学年の設定
+        st.setString(5, student.getNo());          // 学生番号の設定
 
         // SQLの実行
         int result = st.executeUpdate();
