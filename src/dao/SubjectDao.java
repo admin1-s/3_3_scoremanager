@@ -31,29 +31,6 @@ public class SubjectDao extends Dao{
 		return s;
 	}
 
-	//指定された学校に元づく科目一覧
-	public List<Subject> getSubjectList(School school) throws Exception{
-		List<Subject> list=new ArrayList<>();
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select * from subject where school_cd=? order by cd");
-		st.setString(1,school.getCd());
-
-		ResultSet rs=st.executeQuery();
-
-		while (rs.next()){
-			Subject sub=new Subject();
-			sub.setCd(rs.getString("cd"));
-			sub.setName(rs.getString("name"));
-			sub.setSchool(school);
-			list.add(sub);
-		}
-
-		st.close();
-		con.close();
-
-		return list;
-	}
-
 	//科目名一覧取得
 	public List<Subject> getAllSubjects() throws Exception{
 		List<Subject> list=new ArrayList<>();
@@ -102,7 +79,7 @@ public class SubjectDao extends Dao{
 
 		List<Subject> list=new ArrayList<>();
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select * from subject where school_cd=?");
+		PreparedStatement st=con.prepareStatement("select * from subject where school_cd=? order by cd");
 		st.setString(1, school.getCd());
 		ResultSet rs=st.executeQuery();
 
