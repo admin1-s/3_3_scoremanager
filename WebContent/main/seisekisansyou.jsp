@@ -71,7 +71,7 @@
         成績参照
     </div>
 
-    <form action="SubjectSearch.action" method="post">
+    <form action="../scoremanaer/SubjectSearch.action" method="post">
         <div class="form-container">
         <div class="form-group">
         <p>科目情報</p>
@@ -112,7 +112,7 @@
 
 
 
-<form action="StudentSearch.action" method="post">
+<form action="../scoremanager/StudentSearch.action" method="post">
 
         <div class="form-container">
         <div class="form-group">
