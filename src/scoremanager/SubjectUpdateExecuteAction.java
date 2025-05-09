@@ -3,6 +3,7 @@ package scoremanager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
@@ -20,6 +21,7 @@ public class SubjectUpdateExecuteAction extends Action{
 		String name=request.getParameter("name");
 
 		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
+		School school=teacher.getSchool();
 
 		Subject subject=new Subject();
 		subject.setCd(cd);
@@ -28,7 +30,7 @@ public class SubjectUpdateExecuteAction extends Action{
 
 		SubjectDao dao=new SubjectDao();
 
-		Subject existing=dao.findByCd(cd);
+		Subject existing=dao.get(cd, school);
 		//科目コードがなくなっている場合
 		if (existing.getCd() == null){
 			request.setAttribute("error", "科目コードが存在していません");

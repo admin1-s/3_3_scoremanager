@@ -22,6 +22,7 @@ public class SubjectDao extends Dao{
 		while(rs.next()){
 			s.setCd(rs.getString("cd"));
 			s.setName(rs.getString("name"));
+			school.setCd(rs.getString("school_cd"));
 			s.setSchool(school);
 		}
 
@@ -50,28 +51,6 @@ public class SubjectDao extends Dao{
 		return list;
 	}
 
-	public Subject findByCd(String cd) throws Exception{
-		Subject s=new Subject();
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select * from subject where cd=?");
-		st.setString(1,cd);
-		ResultSet rs = st.executeQuery();
-
-		while(rs.next()){
-			s.setCd(rs.getString("cd"));
-			s.setName(rs.getString("name"));
-
-			School school=new School();
-			school.setCd(rs.getString("school_cd"));
-			s.setSchool(school);
-		}
-
-		st.close();
-		con.close();
-
-		return s;
-	}
-
 	public List<Subject> filter(School school)throws Exception{
 		if (school == null) {
 	        throw new IllegalArgumentException("school is null");
@@ -97,6 +76,8 @@ public class SubjectDao extends Dao{
 		return list;
 
 	}
+
+
 
 	public boolean save(Subject subject) throws Exception{
 		Connection con=getConnection();

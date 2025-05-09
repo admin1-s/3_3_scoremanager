@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
@@ -18,6 +19,7 @@ public class SubjectCreateExecuteAction extends Action{
 
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher) session.getAttribute("teacher");
+		School school=teacher.getSchool();
 
 		String cd=request.getParameter("cd");
 		String name=request.getParameter("name");
@@ -31,7 +33,7 @@ public class SubjectCreateExecuteAction extends Action{
 			return "SubjectCreate.action";
 		}
 
-		Subject existing=dao.findByCd(cd);
+		Subject existing=dao.get(cd, school);
 		//既に科目コードが存在している場合
 		if (existing.getCd() != null){
 			request.setAttribute("error", "科目コードが重複しています");
