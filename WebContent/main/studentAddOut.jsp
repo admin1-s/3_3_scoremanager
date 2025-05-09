@@ -5,6 +5,6 @@
 <div class="main">
 <p>登録が完了しました。</p>
 <a href="../scoremanager.main/studentInfo">戻る</a><br>
-<a href="../scoremanager.main/studentlist3">学生一覧</a>
+<a href="../scoremanager/StudentList.action">学生一覧</a>
 </div>
 <%@ include file="../tool/footer.jsp" %>

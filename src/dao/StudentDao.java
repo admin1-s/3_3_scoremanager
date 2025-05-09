@@ -158,27 +158,6 @@ public class StudentDao extends Dao {
         return list;
     }
 
-    // 学生を追加するメソッド
-    public int insert(Student student) throws Exception {
-        Connection con = getConnection();
-
-        PreparedStatement st = con.prepareStatement(
-            "INSERT INTO STUDENT (ENT_YEAR, NO, NAME, CLASS_NUM, IS_ATTEND) VALUES (?, ?, ?, ?, ?)"
-        );
-        st.setInt(1, student.getEntYear());
-        st.setString(2, student.getNo());
-        st.setString(3, student.getName());
-        st.setString(4, student.getClassNum());
-        st.setString(5, student.isAttend() ? "TRUE" : "FALSE");
-
-        int line = st.executeUpdate();
-
-        st.close();
-        con.close();
-        return line;
-    }
-
-
     public Student findByNo(String no) throws Exception {
         Student s = null;
         Connection con = getConnection();
@@ -258,6 +237,25 @@ public class StudentDao extends Dao {
         return list;
 
     }
+
+    // 学生を追加するメソッド
+    public boolean save(Student student) throws Exception{
+		Connection con=getConnection();
+		String sql="INSERT INTO STUDENT (ENT_YEAR, NO, NAME, CLASS_NUM, IS_ATTEND) VALUES (?, ?, ?, ?, ?)";
+		PreparedStatement st=con.prepareStatement(sql);
+		st.setInt(1, student.getEntYear());
+        st.setString(2, student.getNo());
+        st.setString(3, student.getName());
+        st.setString(4, student.getClassNum());
+        st.setString(5, student.isAttend() ? "TRUE" : "FALSE");
+		int result=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return  result>0;
+
+	}
 
     // 新規追加：Schoolを使わない filter メソッド
     public List<Student> filter(Integer entYear, String classNum, Boolean isAttend) throws Exception {

@@ -51,7 +51,7 @@
 <div class="content-area">
     <h2>学生情報登録</h2>
 
-    <form action="studentAdd" method="post">
+    <form action="../scoremanager/StudentCreateExecute.action" method="post">
 
         <label for="entYear">入学年度:</label>
         <select name="entYear" id="entYear" required>
@@ -91,7 +91,7 @@
 
         <input type="submit" value="登録して終了"><br>
 
-        <a href="../scoremanager.main/studentlist3">戻る</a>
+        <a href="../scoremanager/StudentList.action">戻る</a>
 
     </form>
 </div>
