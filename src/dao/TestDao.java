@@ -216,16 +216,19 @@ public class TestDao extends Dao {
             st.executeUpdate();
         } else {
             // 挿入
-            st = con.prepareStatement("INSERT INTO test (student_no, subject_cd, school_cd, point) VALUES (?, ?, ?, ?)");
-            st.setString(1, test.getStudent().getNo());
-            st.setString(2, test.getSubject().getCd());
-            st.setString(3, test.getSubject().getSchool().getCd());
-            st.setInt(4, test.getPoint());
-            st.executeUpdate();
-        }
+        	st=con.prepareStatement(
+        	"insert into test values(?, ?, ?, ?, ?, ?)");
+        	st.setString(1, test.getStudent().getNo());
+        	st.setString(2, test.getSubject().getCd());
+        	st.setString(3, test.getSubject().getSchool().getCd());
+        	st.setInt(4, test.getNo());
+        	st.setInt(5, test.getPoint());
+        	st.setString(6, test.getClassNum());
 
+        	int line=st.executeUpdate();
+        }
         rs.close();
         st.close();
         con.close();
-    }
+}
 }
