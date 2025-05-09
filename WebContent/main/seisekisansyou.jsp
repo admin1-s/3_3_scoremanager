@@ -8,6 +8,7 @@
     .content-area {
         margin-left: 1px;
         padding: 30px;
+        width:100%;
     }
 
     .title-area {
