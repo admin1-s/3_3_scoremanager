@@ -49,7 +49,7 @@ public class TestRegistExecuteAction extends Action{
 				test.setPoint(point);
 				test.setNo(No);
 
-				testDao.save(test, sub);
+				testDao.save(test);
 			}
 		}
 
