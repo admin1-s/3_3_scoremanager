@@ -192,7 +192,7 @@ public class TestDao extends Dao {
         return test;
     }
 
-    public void save(Test test) throws Exception {
+    public boolean save(Test test) throws Exception {
         Connection con = getConnection();
         PreparedStatement st;
         ResultSet rs;
@@ -214,6 +214,7 @@ public class TestDao extends Dao {
             st.setString(3, test.getSubject().getCd());
             st.setString(4, test.getSubject().getSchool().getCd());
             st.executeUpdate();
+
         } else {
             // 挿入
         	st=con.prepareStatement(
@@ -225,10 +226,13 @@ public class TestDao extends Dao {
         	st.setInt(5, test.getPoint());
         	st.setString(6, test.getClassNum());
 
-        	int line=st.executeUpdate();
         }
-        rs.close();
+
+        int line=st.executeUpdate();
+
         st.close();
         con.close();
+
+        return line>0;
 }
 }

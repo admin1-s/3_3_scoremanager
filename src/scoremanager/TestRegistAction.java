@@ -32,7 +32,7 @@ public class TestRegistAction extends Action{
         List<ClassNum> classList=classDao.getClassNum(school);
 
         SubjectDao subjectDao=new SubjectDao();
-        List<Subject> subjectList=subjectDao.getSubjectList(school);
+        List<Subject> subjectList=subjectDao.filter(school);
 
         int currentYear=java.time.Year.now().getValue();
         int[] yearList=new int[10];
