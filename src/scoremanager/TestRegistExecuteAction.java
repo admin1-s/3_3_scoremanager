@@ -14,7 +14,7 @@ import dao.StudentDao;
 import dao.TestDao;
 import tool.Action;
 
-public class TestRegistDoneAction extends Action{
+public class TestRegistExecuteAction extends Action{
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
@@ -24,7 +24,6 @@ public class TestRegistDoneAction extends Action{
 
 		int entYear=Integer.parseInt(request.getParameter("entYear"));
 		String classNum=request.getParameter("classNum");
-		System.out.println(classNum);
 		String subjectCd=request.getParameter("subjectCd");
 		int No=Integer.parseInt(request.getParameter("no"));
 
@@ -50,7 +49,7 @@ public class TestRegistDoneAction extends Action{
 				test.setPoint(point);
 				test.setNo(No);
 
-				testDao.save(test);
+				testDao.save(test, sub);
 			}
 		}
 

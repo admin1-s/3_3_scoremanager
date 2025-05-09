@@ -15,7 +15,7 @@ public class SubjectDao extends Dao{
 	public Subject get(String cd, School school) throws Exception{
 		Subject s=new Subject();
 		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("select * from student where school_cd=?");
+		PreparedStatement st=con.prepareStatement("select * from subject where cd=?");
 		st.setString(1,cd);
 		ResultSet rs = st.executeQuery();
 
@@ -48,8 +48,8 @@ public class SubjectDao extends Dao{
 			list.add(sub);
 		}
 
-		rs.close();
 		st.close();
+		con.close();
 
 		return list;
 	}

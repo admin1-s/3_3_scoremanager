@@ -61,7 +61,7 @@ public class TestRegistAction extends Action{
 
         		//成績取得
         		TestDao testDao=new TestDao();
-        		Test testList=testDao.getTest(classNum, subjectCd, school);
+        		Test testList=testDao.get(classNum, subjectCd, school);
 
         		//科目名取得
         		Subject subject=subjectDao.get(subjectCd, school);

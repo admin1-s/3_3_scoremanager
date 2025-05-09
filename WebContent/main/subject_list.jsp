@@ -46,7 +46,7 @@
 
 	.table th,.table td{
     border-bottom: 1px solid #000;
-    padding: 10px;
+    padding: 20px;
 }
 
 	.create {
