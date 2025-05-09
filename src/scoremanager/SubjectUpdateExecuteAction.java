@@ -37,7 +37,7 @@ public class SubjectUpdateExecuteAction extends Action{
 			return "SubjectUpdate.action";
 		}
 
-		dao.update(subject);
+		dao.save(subject);
 
 		return "../main/subject_update_done.jsp";
 	}

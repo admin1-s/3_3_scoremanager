@@ -77,36 +77,40 @@ public class SubjectDao extends Dao{
 
 	}
 
+	public boolean save(Subject subject) throws Exception {
+	    Connection con = getConnection();
+	    PreparedStatement st;
+	    ResultSet rs;
 
+	    // 科目の存在チェック
+	    st = con.prepareStatement("select * from subject where cd = ? and school_cd = ?");
+	    st.setString(1, subject.getCd());
+	    st.setString(2, subject.getSchool().getCd());
+	    rs = st.executeQuery();
 
-	public boolean save(Subject subject) throws Exception{
-		Connection con=getConnection();
-		String sql="insert into subject (cd, name, school_cd) values(?, ?, ?)";
-		PreparedStatement st=con.prepareStatement(sql);
-		st.setString(1, subject.getCd());
-		st.setString(2, subject.getName());
-		st.setString(3, subject.getSchool().getCd());
-		int result=st.executeUpdate();
+	    int line;
 
-		st.close();
-		con.close();
+	    if (rs.next()) {
+	        // 更新
+	        st = con.prepareStatement("update subject set name = ? where cd = ? and school_cd = ?");
+	        st.setString(1, subject.getName());
+	        st.setString(2, subject.getCd());
+	        st.setString(3, subject.getSchool().getCd());
+	        line = st.executeUpdate();
+	    } else {
+	        // 挿入
+	        st = con.prepareStatement("insert into subject (cd, name, school_cd) values (?, ?, ?)");
+	        st.setString(1, subject.getCd());
+	        st.setString(2, subject.getName());
+	        st.setString(3, subject.getSchool().getCd());
+	        line = st.executeUpdate();
+	    }
 
-		return  result>0;
+	    rs.close();
+	    st.close();
+	    con.close();
 
-	}
-
-	public boolean update(Subject subject)throws Exception{
-		Connection con=getConnection();
-		PreparedStatement st=con.prepareStatement("update subject set name=? where cd=? and school_cd=?");
-		st.setString(1, subject.getName());
-		st.setString(2, subject.getCd());
-		st.setString(3, subject.getSchool().getCd());
-		int result=st.executeUpdate();
-
-		st.close();
-		con.close();
-
-		return result>0;
+	    return line > 0;
 	}
 
 	public boolean delete(Subject subject) throws Exception{
