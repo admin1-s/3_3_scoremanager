@@ -79,7 +79,7 @@ public class TestListAction extends Action {
         } else {
             errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
             request.setAttribute("errors", errors);
-            students = sDao.search(null, null, isAttend);
+            students = sDao.search(null, null, subject);
         }
 
         // JSPに渡すデータをセット
@@ -90,7 +90,7 @@ public class TestListAction extends Action {
         request.setAttribute("ent_year_set", entYearSet); // 入学年度選択肢
 
         // JSPへフォワード
-        request.getRequestDispatcher("../main/studentlist.jsp").forward(request, response);
+        request.getRequestDispatcher("../main/test_list.jsp").forward(request, response);
 
         return null; // forward なので null
     }
