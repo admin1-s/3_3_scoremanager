@@ -51,22 +51,25 @@
 <div class="content-area">
     <h2>学生情報登録</h2>
 
+	<%
+        String error = (String) request.getAttribute("error");
+        if (error != null) {
+    %>
+        <p style="color:red; font-weight:bold;"><%= error %></p>
+    <%
+        }
+    %>
+
     <form action="../scoremanager/StudentCreateExecute.action" method="post">
 
         <label for="entYear">入学年度:</label>
-        <select name="entYear" id="entYear" required>
-            <option value="">--------</option>
-            <%
-                List<Integer> entYears = (List<Integer>) request.getAttribute("entYears");
-                if (entYears != null) {
-                    for (Integer year : entYears) {
-            %>
-                <option value="<%= year %>"><%= year %></option>
-            <%
-                    }
-                }
-            %>
-        </select>
+		<select name="entYear" id="entYear" required>
+    		<option value="">--------</option>
+    			<% for (int year = 2026; year >= 2016; year--) { %>
+        	<option value="<%= year %>"><%= year %></option>
+    			<% } %>
+		</select>
+
 
         <label for="no">学生番号:</label>
         <input type="text" name="no" id="no" required>

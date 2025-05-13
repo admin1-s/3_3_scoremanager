@@ -248,6 +248,7 @@ public class StudentDao extends Dao {
         st.setString(3, student.getName());
         st.setString(4, student.getClassNum());
         st.setString(5, student.isAttend() ? "TRUE" : "FALSE");
+        st.setString(6, student.getSchool().getCd());
 		int result=st.executeUpdate();
 
 		st.close();
@@ -256,6 +257,37 @@ public class StudentDao extends Dao {
 		return  result>0;
 
 	}
+
+
+    public Student findByNoSchool(School schoolCd, String no) throws Exception {
+        Student s = null;
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("SELECT * FROM student WHERE school_cd = ? AND no = ?");
+        st.setString(1, schoolCd.getCd());
+        st.setString(2, no);
+        ResultSet rs = st.executeQuery();
+
+        if (rs.next()) {
+            s = new Student();
+            s.setEntYear(rs.getInt("ENT_YEAR"));
+            s.setNo(rs.getString("NO"));
+            s.setName(rs.getString("NAME"));
+            s.setClassNum(rs.getString("CLASS_NUM"));
+            s.setAttend("TRUE".equalsIgnoreCase(rs.getString("IS_ATTEND")));
+
+            School school = new School();
+            school.setCd(rs.getString("SCHOOL_CD"));
+            s.setSchool(school);
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return s;
+    }
+
+
 
     // 新規追加：Schoolを使わない filter メソッド
     public List<Student> filter(Integer entYear, String classNum, Boolean isAttend) throws Exception {
