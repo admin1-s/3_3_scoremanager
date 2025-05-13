@@ -120,8 +120,8 @@
 		<form action="TestRegist.action" method="post" style="text-align: center;">
 			<div style="float: left; margin-right: 10%;">
 			入学年度<br>
-			<select name="entYear" style="margin-top: 5px;">
-				<option value="">--</option>
+			<select name="f1" style="margin-top: 5px;">
+				<option value="">--------</option>
 				<c:forEach var="year" items="${yearList }">
 					<option value="${year }" <c:if test="${year == selectedYear}">selected</c:if>>${year}</option>
 				</c:forEach>
@@ -130,8 +130,8 @@
 
 			<div style="float: left; margin-right: 10%">
 			クラス<br>
-			<select name="classNum" style="margin-top: 5px;">
-				<option value="">--</option>
+			<select name="f2" style="margin-top: 5px;">
+				<option value="">--------</option>
 				<c:forEach var="c" items="${classList }">
 					<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == selectedClass}">selected</c:if>>${c.getClassNum()}</option>
 				</c:forEach>
@@ -140,8 +140,8 @@
 
 			<div style="float: left; margin-right: 10%">
 			科目<br>
-			<select name="subjectCd" style="margin-top: 5px;">
-				<option value="">--</option>
+			<select name="f3" style="margin-top: 5px;">
+				<option value="">--------</option>
 				<c:forEach var="sub" items="${subjectList }">
 					<option value="${sub.getCd() }" <c:if test="${sub.getCd() ==selectedSubject }">selected</c:if>>${sub.getName() }</option>
 				</c:forEach>
@@ -150,8 +150,8 @@
 
 			<div style="float: left; margin-right: 10%">
 			回数<br>
-			<select name="count" style="margin-top: 5px;">
-				<option value="">--</option>
+			<select name="f4" style="margin-top: 5px;">
+				<option value="">--------</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
 			</select>
@@ -164,7 +164,7 @@
 
 	<!-- 学生と成績入力欄 -->
 	<c:if test="${not empty subjectList }">
-		<p>科目：${subjectName }（第${selectedCount }回）</p>
+		<p>科目：${subjectName }（第${f4 }回）</p>
 		<form action="TestRegistExecute.action" method="post">
 			<table class="table">
 				<tr>
@@ -177,25 +177,29 @@
 
 				<c:forEach var="student" items="${studentList }">
 					<tr>
-						<td>${selectedYear }</td>
-						<td>${selectedClass }</td>
+						<td>${f1 }</td>
+						<td>${f2 }</td>
 						<td>${student.getNo() }</td>
 						<td>${student.getName() }</td>
 						<td>
 							<input type="number" name="score_${student.getNo() }"
 							value="<c:forEach var='test' items='${testList }'>
-										<c:if test='${test.student.no == student.no }'>${test.point}</c:if>
-									</c:forEach>" min="0" max="100" required />
+										<c:if test='${test.student.getNo() == student.getNo() }'>${test.getPoint()}</c:if>
+									</c:forEach>"/>
+							<%String error=(String) request.getAttribute("error"); %>
+			 				<% if (error != null){ %>
+								<p class="error_massage" style="color: orange; font-size:13px;">※<%= error %></p>
+			 				<%} %>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
 
 			<!-- 検索条件をhiddenで保持 -->
-			<input type="hidden" name="entYear" value="${selectedYear }" />
-			<input type="hidden" name="classNum" value="${selectedClass }" />
-			<input type="hidden" name="subjectCd" value="${selectedSubject }" />
-			<input type="hidden" name="no" value="${selectedCount }" />
+			<input type="hidden" name="entYear" value="${f1}" />
+			<input type="hidden" name="classNum" value="${f2}" />
+			<input type="hidden" name="subject" value="${f3}" />
+			<input type="hidden" name="count" value="${f4}" />
 
 			<input type="submit" value="登録して終了" class="fin" style="margin-top:10px;" />
 		</form>

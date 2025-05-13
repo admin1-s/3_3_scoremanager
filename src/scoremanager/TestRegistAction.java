@@ -26,6 +26,13 @@ public class TestRegistAction extends Action{
 	) throws Exception{
 		HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
+
+      //未ログインの時
+      	if (teacher == null){
+      	System.out.println("teacher is null.");
+    	return "../main/login-in.jsp";
+      }
+
         School school=teacher.getSchool();
 
         ClassNumDao classDao=new ClassNumDao();
@@ -44,10 +51,10 @@ public class TestRegistAction extends Action{
         request.setAttribute("subjectList", subjectList);
         request.setAttribute("yearList", yearList);
 
-        String entYearStr=request.getParameter("entYear");
-        String classNum=request.getParameter("classNum");
-        String subjectCd=request.getParameter("subjectCd");
-        String countStr=request.getParameter("count");
+        String entYearStr=request.getParameter("f1");
+        String classNum=request.getParameter("f2");
+        String subjectCd=request.getParameter("f3");
+        String countStr=request.getParameter("f4");
 
         if (entYearStr != null && classNum != null && subjectCd != null && countStr != null &&
         	!entYearStr.isEmpty() && !classNum.isEmpty() && !subjectCd.isEmpty() && !countStr.isEmpty()){
@@ -70,10 +77,10 @@ public class TestRegistAction extends Action{
         		request.setAttribute("studentList", studentList);
         		request.setAttribute("testList", testList);
         		request.setAttribute("subjectName", subject.getName());
-        		request.setAttribute("selectedYear", entYear);
-        		request.setAttribute("selectedClass", classNum);
-        		request.setAttribute("selectedSubject", subjectCd);
-        		request.setAttribute("selectedCount", count);
+        		request.setAttribute("f1", entYear);
+        		request.setAttribute("f2", classNum);
+        		request.setAttribute("f3", subjectCd);
+        		request.setAttribute("f4", count);
         	} catch (NumberFormatException e){
         		request.setAttribute("message", "検索条件が正しくありません");
         	}
