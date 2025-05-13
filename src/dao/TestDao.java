@@ -235,4 +235,20 @@ public class TestDao extends Dao {
 
         return line>0;
     }
+
+    public boolean delete(Test test) throws Exception{
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement("delete from test where student_no = ? and subject_cd = ? and school_cd = ? and no=?");
+        st.setString(1, test.getStudent().getNo());
+        st.setString(2, test.getSubject().getCd());
+        st.setString(3, test.getSubject().getSchool().getCd());
+        st.setInt(4, test.getNo());
+		int result=st.executeUpdate();
+
+		st.close();
+		con.close();
+
+		return result>0;
+
+	}
 }
