@@ -32,7 +32,8 @@ public class StudentCreateExecuteAction extends Action {
         student.setName(name);
         student.setEntYear(entYear);
         student.setClassNum(classNum);
-        student.setSchool(school);  // 学校情報もセット
+        student.setSchool(school);
+        student.setAttend(true);
 
         StudentDao dao = new StudentDao();
 
@@ -50,6 +51,7 @@ public class StudentCreateExecuteAction extends Action {
         }
 
         // 保存実行
+        System.out.print(existing);
         dao.save(student);
 
         return "../main/student_create_done.jsp";

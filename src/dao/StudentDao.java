@@ -239,24 +239,24 @@ public class StudentDao extends Dao {
     }
 
     // 学生を追加するメソッド
-    public boolean save(Student student) throws Exception{
-		Connection con=getConnection();
-		String sql="INSERT INTO STUDENT (ENT_YEAR, NO, NAME, CLASS_NUM, IS_ATTEND) VALUES (?, ?, ?, ?, ?)";
-		PreparedStatement st=con.prepareStatement(sql);
-		st.setInt(1, student.getEntYear());
+    public boolean save(Student student) throws Exception {
+        Connection con = getConnection();
+        String sql = "INSERT INTO STUDENT (ENT_YEAR, NO, NAME, CLASS_NUM, IS_ATTEND, SCHOOL_CD) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setInt(1, student.getEntYear());
         st.setString(2, student.getNo());
         st.setString(3, student.getName());
         st.setString(4, student.getClassNum());
         st.setString(5, student.isAttend() ? "TRUE" : "FALSE");
         st.setString(6, student.getSchool().getCd());
-		int result=st.executeUpdate();
+        int result = st.executeUpdate();
 
-		st.close();
-		con.close();
+        st.close();
+        con.close();
 
-		return  result>0;
+        return result > 0;
+    }
 
-	}
 
 
     public Student findByNoSchool(School schoolCd, String no) throws Exception {

@@ -51,15 +51,6 @@
 <div class="content-area">
     <h2>学生情報登録</h2>
 
-	<%
-        String error = (String) request.getAttribute("error");
-        if (error != null) {
-    %>
-        <p style="color:red; font-weight:bold;"><%= error %></p>
-    <%
-        }
-    %>
-
     <form action="../scoremanager/StudentCreateExecute.action" method="post">
 
         <label for="entYear">入学年度:</label>
@@ -70,9 +61,17 @@
     			<% } %>
 		</select>
 
-
         <label for="no">学生番号:</label>
         <input type="text" name="no" id="no" required>
+
+        <%
+        String error = (String) request.getAttribute("error");
+        if (error != null) {
+    %>
+        <p style="color:red; font-weight:bold;"><%= error %></p>
+    <%
+        }
+    %>
 
         <label for="name">氏名:</label>
         <input type="text" name="name" id="name" required>
