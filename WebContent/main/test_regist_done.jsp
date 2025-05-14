@@ -61,7 +61,7 @@
 		</div>
 
 		<div>
-			<a href="../scoremanager/TestRegist.action">戻る</a>
+			<a href="../scoremanager/TestRegist.action" style="margin-right:10%;">戻る</a>
 			<a href="http://localhost:8080/management_score/main/seisekisansyou.jsp" >成績参照</a>
 		</div>
 
