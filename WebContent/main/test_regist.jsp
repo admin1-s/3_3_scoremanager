@@ -186,10 +186,12 @@
 							value="<c:forEach var='test' items='${testList }'>
 										<c:if test='${test.student.getNo() == student.getNo() }'>${test.getPoint()}</c:if>
 									</c:forEach>"/>
-							<%String error=(String) request.getAttribute("error"); %>
-			 				<% if (error != null){ %>
-								<p class="error_massage" style="color: orange; font-size:13px;">※<%= error %></p>
-			 				<%} %>
+							<!-- エラーメッセージの表示 -->
+							<c:if test="${not empty errorMap[student.no] }">
+								<p class="error" style="color:orange; front-size:13px;">
+									※${errorMap[student.no] }
+								</p>
+							</c:if>
 						</td>
 					</tr>
 				</c:forEach>
