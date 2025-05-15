@@ -12,8 +12,8 @@
     </c:if>
 
     <form action="../scoremanager/Login.action" method="post">
-        <input type="text" name="id" class="login-input" placeholder="ID" value="admin" required />
-		<input type="password" name="password" class="login-input" placeholder="パスワード" required />
+        <input type="text" name="id" class="login-input" placeholder="半角でご入力ください" value="admin" required />
+		<input type="password" name="password" class="login-input" placeholder="30字以内の半角英数字でご入力ください" required />
         <div class="remember-me">
             <input type="checkbox" id="showPassword" />
             <label for="showPassword">パスワードを表示</label>
