@@ -62,19 +62,19 @@
 		</select>
 
         <label for="no">学生番号:</label>
-        <input type="text" name="no" id="no" required>
+        <input type="text" name="no" id="no" placeholder="学生番号を入力してください" required>
 
         <%
         String error = (String) request.getAttribute("error");
         if (error != null) {
     %>
-        <p style="color:red; font-weight:bold;"><%= error %></p>
+        <p style="color: orange; font-size:13px;"><%= error %></p>
     <%
         }
     %>
 
         <label for="name">氏名:</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" placeholder="氏名を入力してください" required>
 
         <label for="class_num">クラス:</label>
         <select name="class_num" id="class_num" required>

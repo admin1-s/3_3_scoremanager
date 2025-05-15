@@ -62,7 +62,7 @@
             <p><input type="submit" value="更新" class="btn"/></p>
     </form>
 
-    <a href="../scoremanager/StudentList.action">学生一覧へ戻る</a>
+    <a href="../scoremanager/StudentList.action">戻る</a>
 </div>
 
 <jsp:include page="../tool/footer.jsp" />

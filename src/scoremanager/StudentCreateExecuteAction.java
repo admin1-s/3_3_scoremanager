@@ -24,6 +24,7 @@ public class StudentCreateExecuteAction extends Action {
         int entYear = Integer.parseInt(request.getParameter("entYear"));
         String classNum = request.getParameter("class_num");
 
+
         // 学校コード取得
         School school = teacher.getSchool();
 
@@ -38,7 +39,7 @@ public class StudentCreateExecuteAction extends Action {
         StudentDao dao = new StudentDao();
 
         // 学生番号の重複チェック
-        Student existing = dao.findByNoSchool(school, no);
+        Student existing = dao.findByNo(no);
         if (existing != null) {
             // 重複していた場合、エラーと初期値をセットしてJSPにフォワード
             request.setAttribute("error", "学生番号が重複しています");
