@@ -51,6 +51,8 @@ public class TestRegistAction extends Action{
         request.setAttribute("subjectList", subjectList);
         request.setAttribute("yearList", yearList);
 
+      //ここから下が検索後
+
         String entYearStr=request.getParameter("f1");
         String classNum=request.getParameter("f2");
         String subjectCd=request.getParameter("f3");
