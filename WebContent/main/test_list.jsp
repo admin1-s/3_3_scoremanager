@@ -121,7 +121,7 @@
 
             <div class="form-group">
                 <label>学生番号</label>
-                <input type="text" name="aaa" required>
+                <input type="text" name="aaa" placeholder="学生番号を入力してください" max=10 required>
             </div>
 
             <div class="form-group">

@@ -6,18 +6,36 @@
 
 <style>
     .content-area {
-    	width: 100%;
-    	margin: 0;
-    	padding: 20px;
-    	box-sizing: border-box;
+    	margin-left: 1px;
+        padding: 30px;
+        width:100%;
 	}
 
-    h2 {
-        background-color: #eeeeee;
-        padding: 15px 30px;
-        font-size: 20px;
-        font-weight: bold;
+	.title-area {
+    	position: relative;
+  		background: #eee;
+  		box-shadow: 0px 0px 0px 5px #eee;
+  		border: dashed 2px white;
+  		padding: 15px 30px;
+		color: #000000;
     }
+
+    .title-area:after{
+    	position: absolute;
+  		content: '';
+  		left: -7px;
+		top: -7px;
+		border-width: 0 0 15px 15px;
+		border-style: solid;
+		border-color: #fff #fff #eee;
+		box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    .title-area p{
+    	margin:0;
+    	font-size: 20px;
+        font-weight: bold;
+   }
 
     form label {
         display: block;
@@ -49,11 +67,13 @@
 </style>
 
 <div class="content-area">
-    <h2>学生情報登録</h2>
+	<div class="title-area">
+    	<p>学生情報登録</p>
+    </div>
 
     <form action="../scoremanager/StudentCreateExecute.action" method="post">
 
-        <label for="entYear">入学年度:</label>
+        <label for="entYear" style="margin-top:30px; ">入学年度:</label>
 		<select name="entYear" id="entYear" required>
     		<option value="">--------</option>
     			<% for (int year = 2026; year >= 2016; year--) { %>
@@ -91,9 +111,9 @@
             %>
         </select>
 
-        <input type="submit" value="登録して終了"><br>
+        <input type="submit" value="登録して終了" style="margin-top:20px; "><br>
 
-        <a href="../scoremanager/StudentList.action">戻る</a>
+        <a href="../scoremanager/StudentList.action" >戻る</a>
 
     </form>
 </div>
