@@ -52,7 +52,6 @@ public class StudentCreateExecuteAction extends Action {
         }
 
         // 保存実行
-        System.out.print(existing);
         dao.save(student);
 
         return "../main/student_create_done.jsp";
