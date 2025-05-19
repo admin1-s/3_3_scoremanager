@@ -15,15 +15,21 @@ public class SubjectUpdateAction extends Action{
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
+
+		//sessionからteacher情報を取得
 		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
 		School school=teacher.getSchool();
 
+		//値の取得
 		String cd=request.getParameter("cd");
 		SubjectDao dao=new SubjectDao();
+
+		//subject情報を取得
 		Subject subject=dao.get(cd, school);
 
 		request.setAttribute("subject", subject);
 
+		//subject_update.jspへ遷移
 		return "../main/subject_update.jsp";
 
 	}

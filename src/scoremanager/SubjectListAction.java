@@ -19,6 +19,7 @@ public class SubjectListAction extends Action{
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
 
+		//sessionからteacher情報を取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher) session.getAttribute("teacher");
 
@@ -36,6 +37,8 @@ public class SubjectListAction extends Action{
 		List<Subject> subjectlist=dao.filter(school);
 
 		request.setAttribute("subjectList", subjectlist);
+
+		//subject_list.jspへ遷移
 		return "../main/subject_list.jsp";
 
 	}

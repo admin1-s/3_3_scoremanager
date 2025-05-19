@@ -12,6 +12,7 @@ public class SubjectCreateAction extends Action {
         HttpServletRequest request, HttpServletResponse response
     ) throws Exception {
 
+    	//subject_create.jspに遷移
         return "../main/subject_create.jsp";
     }
 }

@@ -15,11 +15,12 @@ public class SubjectUpdateExecuteAction extends Action{
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	)throws Exception{
-		request.setCharacterEncoding("UTF-8");
 
+		//値の取得
 		String cd=request.getParameter("cd");
 		String name=request.getParameter("name");
 
+		//sessionからteacher情報を取得
 		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
 		School school=teacher.getSchool();
 
@@ -37,8 +38,10 @@ public class SubjectUpdateExecuteAction extends Action{
 			return "SubjectUpdate.action";
 		}
 
+		//subject情報の更新
 		dao.save(subject);
 
+		//subject_update_done.jsp
 		return "../main/subject_update_done.jsp";
 	}
 

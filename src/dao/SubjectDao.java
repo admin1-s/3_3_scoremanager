@@ -12,6 +12,7 @@ import bean.Subject;
 
 public class SubjectDao extends Dao{
 
+	//cdに基づく科目情報の取得
 	public Subject get(String cd, School school) throws Exception{
 		Subject s=new Subject();
 		Connection con=getConnection();
@@ -51,6 +52,7 @@ public class SubjectDao extends Dao{
 		return list;
 	}
 
+	//subject_cdに基づく科目情報の一覧取得
 	public List<Subject> filter(School school)throws Exception{
 		if (school == null) {
 	        throw new IllegalArgumentException("school is null");
@@ -77,6 +79,7 @@ public class SubjectDao extends Dao{
 
 	}
 
+	//与えられた科目情報の更新または挿入
 	public boolean save(Subject subject) throws Exception {
 	    Connection con = getConnection();
 	    PreparedStatement st;
@@ -98,7 +101,7 @@ public class SubjectDao extends Dao{
 	        st.setString(3, subject.getSchool().getCd());
 	        line = st.executeUpdate();
 	    } else {
-	        // 挿入
+	        // 追加
 	        st = con.prepareStatement("insert into subject (cd, name, school_cd) values (?, ?, ?)");
 	        st.setString(1, subject.getCd());
 	        st.setString(2, subject.getName());
@@ -113,6 +116,7 @@ public class SubjectDao extends Dao{
 	    return line > 0;
 	}
 
+	//与えられた科目情報の削除
 	public boolean delete(Subject subject) throws Exception{
 		Connection con=getConnection();
 		PreparedStatement st=con.prepareStatement("delete from subject where name=? and cd=? and school_cd=?");

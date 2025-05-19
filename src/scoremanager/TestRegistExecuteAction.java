@@ -22,6 +22,7 @@ public class TestRegistExecuteAction extends Action{
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
 
+		#sessionからteacher
 		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
 		School school=teacher.getSchool();
 

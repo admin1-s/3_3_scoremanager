@@ -17,13 +17,16 @@ public class SubjectCreateExecuteAction extends Action{
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
 
+		//sessionからteacher情報を取得
 		HttpSession session=request.getSession();
 		Teacher teacher=(Teacher) session.getAttribute("teacher");
 		School school=teacher.getSchool();
 
+		//値の取得
 		String cd=request.getParameter("cd");
 		String name=request.getParameter("name");
 
+		//インスタンス生成
 		Subject subject=new Subject();
 		SubjectDao dao=new SubjectDao();
 
@@ -44,8 +47,10 @@ public class SubjectCreateExecuteAction extends Action{
 		subject.setName(name);
 		subject.setSchool(teacher.getSchool());
 
+		//入力された科目情報の追加
 		dao.save(subject);
 
+		//subject_create_done.jspに遷移
 		return "../main/subject_create_done.jsp";
 
 	}

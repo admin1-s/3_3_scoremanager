@@ -14,11 +14,12 @@ public class SubjectDeleteExecuteAction extends Action{
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	)throws Exception{
-		request.setCharacterEncoding("UTF-8");
 
+		//値の取得
 		String cd=request.getParameter("cd");
 		String name=request.getParameter("name");
 
+		//sessionからteacher情報を取得
 		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
 
 		Subject subject=new Subject();
@@ -28,8 +29,10 @@ public class SubjectDeleteExecuteAction extends Action{
 
 		SubjectDao dao=new SubjectDao();
 
+		//入力された科目情報の削除
 		dao.delete(subject);
 
+		//subject_delete_done.jspへ遷移
 		return "../main/subject_delete_done.jsp";
 	}
 
