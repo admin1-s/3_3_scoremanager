@@ -24,6 +24,8 @@ public class TestRegistAction extends Action{
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
+
+		//sessionからteacher情報の取得
 		HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
 
@@ -93,6 +95,7 @@ public class TestRegistAction extends Action{
 
 
 
+        //test_regist.jspへ遷移
 		return "../main/test_regist.jsp";
 
 	}

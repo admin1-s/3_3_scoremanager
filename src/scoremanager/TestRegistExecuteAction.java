@@ -22,15 +22,17 @@ public class TestRegistExecuteAction extends Action{
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception{
 
-		#sessionからteacher
+		//sessionからteacher情報の取得
 		Teacher teacher=(Teacher) request.getSession().getAttribute("teacher");
 		School school=teacher.getSchool();
 
+		//値の取得
 		int entYear=Integer.parseInt(request.getParameter("entYear"));
 		String classNum=request.getParameter("classNum");
 		String subjectCd=request.getParameter("subject");
 		int No=Integer.parseInt(request.getParameter("count"));
 
+		//インスタンス化し、学生情報一覧を取得
 		StudentDao studentDao=new StudentDao();
 		List<Student> studentList=studentDao.getStudentList(school, classNum, entYear);
 
@@ -40,6 +42,7 @@ public class TestRegistExecuteAction extends Action{
 		TestDao testDao=new TestDao();
 
 		for (Student student : studentList){
+			//値の取得
 			String paramName="score_" + student.getNo();
 			String pointStr=request.getParameter(paramName);
 
@@ -52,6 +55,7 @@ public class TestRegistExecuteAction extends Action{
 			test.setSubject(sub);
 			test.setNo(No);
 
+			//点数が未入力だった場合test情報を削除
 			if (pointStr.isEmpty()){
 				testDao.delete(test);
 				continue;
@@ -59,6 +63,7 @@ public class TestRegistExecuteAction extends Action{
 
 			int point=Integer.parseInt(pointStr);
 
+			//点数が０未満100より大きい場合、エラーメッセージを渡す
 			if (point<0 || 100<point){
 				errorMap.put(student.getNo(), "0〜100の範囲で入力してください");
 	            hasError = true;
@@ -71,6 +76,7 @@ public class TestRegistExecuteAction extends Action{
 
 		}
 
+			//点数が範囲外だった場合、該当箇所にエラーメッセージを飛ばす
 			if (hasError){
 				request.setAttribute("errorMap", errorMap);
 				request.setAttribute("studentList", studentList);
@@ -86,9 +92,11 @@ public class TestRegistExecuteAction extends Action{
         		request.setAttribute("subjectName", subject.getName());
         		request.setAttribute("f4", No);
 
+        		//TestRegistAction.javaに遷移
         		return "TestRegist.action";
 			}
 
+		//test_regist_done.jspに遷移
 		return "../main/test_regist_done.jsp";
 	}
 
