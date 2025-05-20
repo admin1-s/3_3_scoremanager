@@ -72,6 +72,7 @@
         成績参照
     </div>
 
+	<!-- 科目情報検索 -->
     <form action="SubjectSearch.action" method="post">
         <div class="form-container">
         <div class="form-group">

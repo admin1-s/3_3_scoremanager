@@ -42,6 +42,7 @@ public class TestListAction extends Action {
     	   yearList[i]=currentYear-i;
     	}
 
+    	//あ
     	request.setAttribute("classList", classList);
     	request.setAttribute("subjectList", subjectList);
     	request.setAttribute("yearList", yearList);
