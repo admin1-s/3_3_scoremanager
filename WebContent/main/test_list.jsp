@@ -48,6 +48,17 @@
         font-size: 14px;
     }
 
+    .table{
+	width: 100%;
+    border-spacing: 0;
+    margin-bottom: 10px;
+}
+
+	.table th,.table td{
+    border-bottom: 1px solid #000;
+    padding: 20px;
+}
+
     .btn-search {
         background-color: #666;
         color: white;
@@ -130,7 +141,7 @@
 
             <div class="form-group">
                 <label>学生番号</label>
-                <input type="text" name="aaa" placeholder="学生番号を入力してください" max=10 required>
+                <input type="text" name="f4" placeholder="学生番号を入力してください" max=10 required>
             </div>
 
             <div class="form-group">
@@ -143,9 +154,56 @@
 		</div>
 </form>
 
-<c:if test="${not empty tests }">
-	<p>氏名：${student.getName()} （）</p>
+<c:if test="${not empty students }">
+	<p>氏名：${student.getName()}（ ${f4} ）</p>
+
+	<table class="table">
+				<tr>
+					<th align=left>入学年度</th>
+					<th align=left>クラス</th>
+					<th align=left>学生番号</th>
+					<th align=left>氏名</th>
+					<th align=left>1回</th>
+					<th align=left>2回</th>
+				<tr>
+
+				<c:forEach var="test" items="${tests }">
+					<tr>
+						<td>${student.getEntYear()}</td>
+						<td>${test.getClassNum()}</td>
+						<td>${student.getNo() }</td>
+						<td>${student.getName() }</td>
+						<td>
+						</td>
+						<td>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
 </c:if>
+
+<c:if test="${not empty tests }">
+	<p>氏名：${student.getName()}（ ${f4} ）</p>
+
+	<table class="table">
+				<tr>
+					<th align=left>科目名</th>
+					<th align=left>科目コード</th>
+					<th align=left>回数</th>
+					<th align=left>点数</th>
+				<tr>
+
+				<c:forEach var="test" items="${tests }">
+					<tr>
+						<td></td>
+						<td>${test.getSubject().getCd()}</td>
+						<td>${test.getNo() }</td>
+						<td>${test.getPoint() }</td>
+					</tr>
+				</c:forEach>
+			</table>
+</c:if>
+
 </div>
 
 <jsp:include page="../tool/footer.jsp" />

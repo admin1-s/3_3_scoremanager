@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import bean.School;
 import bean.Student;
+import bean.Subject;
 import bean.Teacher;
 import bean.Test;
 import dao.StudentDao;
+import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
@@ -24,26 +26,31 @@ public class TestListStudentExecuteAction extends Action {
     	School school=teacher.getSchool();
 
         // 入力された学生番号を取得
-        String studentNo = req.getParameter("student_no");
+        String f4 = req.getParameter("f4");
 
         // 入力チェック
-        if (studentNo == null || studentNo.isEmpty()) {
+        if (f4 == null || f4.isEmpty()) {
             req.setAttribute("message", "このフィールドを入力してください。");
             return "../main/test_list.jsp";
         }
 
         // 成績データ取得
         TestDao tDao = new TestDao();
-        List<Test> tests = tDao.searchByStudentNo(studentNo, school.getCd());
+        List<Test> tests = tDao.searchByStudentNo(f4, school.getCd());
 
         StudentDao stuDao=new StudentDao();
-        Student student=stuDao.findByNo(studentNo);
+        Student student=stuDao.findByNo(f4);
+
+        SubjectDao subjectDao = new SubjectDao();
+        List<Subject> subjectList = subjectDao.filter(school);
+
 
         // リクエストに結果を格納
         req.setAttribute("tests", tests);
         req.setAttribute("student", student);
-        req.setAttribute("student_no", studentNo);
+        req.setAttribute("subject", subjectList);
+        req.setAttribute("f4", f4);
 
-        return "../main/test_list_student.jsp";
+        return "../main/test_list.jsp";
     }
 }
