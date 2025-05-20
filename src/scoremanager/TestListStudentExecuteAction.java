@@ -10,8 +10,10 @@ import bean.School;
 import bean.Student;
 import bean.Teacher;
 import bean.Test;
+import bean.TestListStudent;
 import dao.StudentDao;
 import dao.TestDao;
+import dao.TestListStudentDao;
 import tool.Action;
 
 public class TestListStudentExecuteAction extends Action {
@@ -24,26 +26,32 @@ public class TestListStudentExecuteAction extends Action {
     	School school=teacher.getSchool();
 
         // 入力された学生番号を取得
-        String studentNo = req.getParameter("student_no");
+        String f4 = req.getParameter("f4");
 
         // 入力チェック
-        if (studentNo == null || studentNo.isEmpty()) {
+        if (f4 == null || f4.isEmpty()) {
             req.setAttribute("message", "このフィールドを入力してください。");
             return "../main/test_list.jsp";
         }
 
         // 成績データ取得
+        Test test=new Test();
         TestDao tDao = new TestDao();
-        List<Test> tests = tDao.searchByStudentNo(studentNo, school.getCd());
+        List<Test> tests = tDao.searchByStudentNo(f4, school.getCd());
 
         StudentDao stuDao=new StudentDao();
-        Student student=stuDao.findByNo(studentNo);
+        Student student=stuDao.findByNo(f4);
+
+        TestListStudentDao tsDao=new TestListStudentDao();
+        List<TestListStudent> list=tsDao.filter(student);
+
 
         // リクエストに結果を格納
         req.setAttribute("tests", tests);
         req.setAttribute("student", student);
-        req.setAttribute("student_no", studentNo);
+        req.setAttribute("f4", f4);
+        req.setAttribute("tsList", list);
 
-        return "../main/test_list_student.jsp";
+        return "../main/test_list.jsp";
     }
 }
