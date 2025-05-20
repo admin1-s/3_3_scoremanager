@@ -93,37 +93,45 @@
             <div style="float: left; margin-right: 10%;">
 			入学年度<br>
 			<select name="f1" style="margin-top: 5px;">
-				<option value="">--------</option>
-				<c:forEach var="year" items="${yearList }">
-					<option value="${year }" <c:if test="${year == selectedYear}">selected</c:if>>${year}</option>
-				</c:forEach>
+    			<option value="">--------</option>
+    			<c:forEach var="year" items="${yearList}">
+        			<option value="${year}" <c:if test="${year == selectedYear}">selected</c:if>>${year}</option>
+    			</c:forEach>
 			</select>
+
 			</div>
 
             <div style="float: left; margin-right: 10%">
 			クラス<br>
 			<select name="f2" style="margin-top: 5px;">
-				<option value="">--------</option>
-				<c:forEach var="c" items="${classList }">
-					<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == selectedClass}">selected</c:if>>${c.getClassNum()}</option>
-				</c:forEach>
+    			<option value="">--------</option>
+    			<c:forEach var="c" items="${classList}">
+        			<option value="${c.classNum}" <c:if test="${c.classNum == selectedClass}">selected</c:if>>${c.classNum}</option>
+    			</c:forEach>
 			</select>
+
 			</div>
 
             <div style="float: left; margin-right: 10%">
 			科目<br>
 			<select name="f3" style="margin-top: 5px;">
-				<option value="">--------</option>
-				<c:forEach var="sub" items="${subjectList }">
-					<option value="${sub.getCd() }" <c:if test="${sub.getCd() ==selectedSubject }">selected</c:if>>${sub.getName() }</option>
-				</c:forEach>
+    			<option value="">--------</option>
+    			<c:forEach var="sub" items="${subjectList}">
+        			<option value="${sub.cd}" <c:if test="${sub.cd == selectedSubject}">selected</c:if>>${sub.name}</option>
+    			</c:forEach>
 			</select>
+
 			</div>
 
 
             <div class="form-group">
                 <button type="submit" class="btn-search">検索</button>
             </div>
+
+            <c:if test="${not empty error}">
+    			<p style="color: orange;">${error}</p>
+			</c:if>
+
         </div>
     </form>
 
