@@ -6,7 +6,7 @@
     <a href="../scoremanager/StudentList.action">学生管理</a>
     <a href="#">成績管理</a>
     <a href="../scoremanager/TestRegist.action">　成績登録</a>
-    <a href="../main/test_list.jsp">　成績参照</a>
+    <a href="../scoremanager/TestList.action">　成績参照</a>
     <a href="../scoremanager/SubjectList.action">科目管理</a>
 	</nav>
 </div>

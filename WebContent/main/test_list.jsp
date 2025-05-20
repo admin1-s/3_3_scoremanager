@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*, bean.*" %>
 <jsp:include page="../tool/header.jsp" />
 <jsp:include page="../main/menu.jsp" />
 
@@ -77,28 +78,35 @@
         <p>科目情報</p>
         </div>
 
-            <div class="form-group">
-                <label>入学年度</label>
-                <select name="entYear">
-                    <option>----</option>
-                    <!-- JSTLで動的に生成 -->
-                </select>
-            </div>
+            <div style="float: left; margin-right: 10%;">
+			入学年度<br>
+			<select name="f1" style="margin-top: 5px;">
+				<option value="">--------</option>
+				<c:forEach var="year" items="${yearList }">
+					<option value="${year }" <c:if test="${year == selectedYear}">selected</c:if>>${year}</option>
+				</c:forEach>
+			</select>
+			</div>
 
-            <div class="form-group">
-                <label>クラス</label>
-                <select name="classId">
-                    <option>----</option>
-                </select>
-            </div>
+            <div style="float: left; margin-right: 10%">
+			クラス<br>
+			<select name="f2" style="margin-top: 5px;">
+				<option value="">--------</option>
+				<c:forEach var="c" items="${classList }">
+					<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == selectedClass}">selected</c:if>>${c.getClassNum()}</option>
+				</c:forEach>
+			</select>
+			</div>
 
-            <div class="form-group">
-                <label>科目</label>
-                <select name="subjectId">
-                    <option>----</option>
-                </select>
-            </div>
-
+            <div style="float: left; margin-right: 10%">
+			科目<br>
+			<select name="f3" style="margin-top: 5px;">
+				<option value="">--------</option>
+				<c:forEach var="sub" items="${subjectList }">
+					<option value="${sub.getCd() }" <c:if test="${sub.getCd() ==selectedSubject }">selected</c:if>>${sub.getName() }</option>
+				</c:forEach>
+			</select>
+			</div>
 
 
             <div class="form-group">
