@@ -193,12 +193,12 @@
 					<th align=left>点数</th>
 				<tr>
 
-				<c:forEach var="test" items="${tests }">
+				<c:forEach var="ts" items="${tsList }">
 					<tr>
-						<td></td>
-						<td>${test.getSubject().getCd()}</td>
-						<td>${test.getNo() }</td>
-						<td>${test.getPoint() }</td>
+						<td>${ts.getSubjectName() }</td>
+						<td>${ts.getSubjectCd()}</td>
+						<td>${ts.getNum() }</td>
+						<td>${ts.getPoint() }</td>
 					</tr>
 				</c:forEach>
 			</table>

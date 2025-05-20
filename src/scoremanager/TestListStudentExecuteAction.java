@@ -8,12 +8,12 @@ import javax.servlet.http.HttpSession;
 
 import bean.School;
 import bean.Student;
-import bean.Subject;
 import bean.Teacher;
 import bean.Test;
+import bean.TestListStudent;
 import dao.StudentDao;
-import dao.SubjectDao;
 import dao.TestDao;
+import dao.TestListStudentDao;
 import tool.Action;
 
 public class TestListStudentExecuteAction extends Action {
@@ -35,21 +35,22 @@ public class TestListStudentExecuteAction extends Action {
         }
 
         // 成績データ取得
+        Test test=new Test();
         TestDao tDao = new TestDao();
         List<Test> tests = tDao.searchByStudentNo(f4, school.getCd());
 
         StudentDao stuDao=new StudentDao();
         Student student=stuDao.findByNo(f4);
 
-        SubjectDao subjectDao = new SubjectDao();
-        List<Subject> subjectList = subjectDao.filter(school);
+        TestListStudentDao tsDao=new TestListStudentDao();
+        List<TestListStudent> list=tsDao.filter(student);
 
 
         // リクエストに結果を格納
         req.setAttribute("tests", tests);
         req.setAttribute("student", student);
-        req.setAttribute("subject", subjectList);
         req.setAttribute("f4", f4);
+        req.setAttribute("tsList", list);
 
         return "../main/test_list.jsp";
     }
