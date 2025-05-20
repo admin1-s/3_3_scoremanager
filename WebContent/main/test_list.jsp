@@ -154,55 +154,7 @@
 		</div>
 </form>
 
-<c:if test="${not empty students }">
-	<p>氏名：${student.getName()}（ ${f4} ）</p>
-
-	<table class="table">
-				<tr>
-					<th align=left>入学年度</th>
-					<th align=left>クラス</th>
-					<th align=left>学生番号</th>
-					<th align=left>氏名</th>
-					<th align=left>1回</th>
-					<th align=left>2回</th>
-				<tr>
-
-				<c:forEach var="test" items="${tests }">
-					<tr>
-						<td>${student.getEntYear()}</td>
-						<td>${test.getClassNum()}</td>
-						<td>${student.getNo() }</td>
-						<td>${student.getName() }</td>
-						<td>
-						</td>
-						<td>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-</c:if>
-
-<c:if test="${not empty tests }">
-	<p>氏名：${student.getName()}（ ${f4} ）</p>
-
-	<table class="table">
-				<tr>
-					<th align=left>科目名</th>
-					<th align=left>科目コード</th>
-					<th align=left>回数</th>
-					<th align=left>点数</th>
-				<tr>
-
-				<c:forEach var="ts" items="${tsList }">
-					<tr>
-						<td>${ts.getSubjectName() }</td>
-						<td>${ts.getSubjectCd()}</td>
-						<td>${ts.getNum() }</td>
-						<td>${ts.getPoint() }</td>
-					</tr>
-				</c:forEach>
-			</table>
-</c:if>
+<jsp:include page="test_list_student.jsp" />
 
 </div>
 

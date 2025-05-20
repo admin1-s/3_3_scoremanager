@@ -4,15 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import bean.School;
 import bean.Student;
-import bean.Teacher;
-import bean.Test;
 import bean.TestListStudent;
 import dao.StudentDao;
-import dao.TestDao;
 import dao.TestListStudentDao;
 import tool.Action;
 
@@ -20,10 +15,6 @@ public class TestListStudentExecuteAction extends Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-    	//sessionからteacher情報の取得
-    	HttpSession session = req.getSession();
-    	Teacher teacher = (Teacher) session.getAttribute("teacher");
-    	School school=teacher.getSchool();
 
         // 入力された学生番号を取得
         String f4 = req.getParameter("f4");
@@ -34,23 +25,35 @@ public class TestListStudentExecuteAction extends Action {
             return "../main/test_list.jsp";
         }
 
-        // 成績データ取得
-        Test test=new Test();
-        TestDao tDao = new TestDao();
-        List<Test> tests = tDao.searchByStudentNo(f4, school.getCd());
-
         StudentDao stuDao=new StudentDao();
         Student student=stuDao.findByNo(f4);
 
+        //存在しない学生番号が入力されたとき
+        if (student == null) {
+            req.setAttribute("mes", "学生が存在しませんでした");
+            return "../main/test_list.jsp";
+        }
+
+        //成績データ取得
         TestListStudentDao tsDao=new TestListStudentDao();
         List<TestListStudent> list=tsDao.filter(student);
 
+        //該当する学生の成績情報が登録されていない時
+        if (list == null || list.isEmpty()) {
+            req.setAttribute("mes", "成績情報が存在しませんでした");
+            req.setAttribute("f4", f4);
+            req.setAttribute("student", student);
+            return "../main/test_list.jsp";
+        }
+
+
+
+
 
         // リクエストに結果を格納
-        req.setAttribute("tests", tests);
         req.setAttribute("student", student);
         req.setAttribute("f4", f4);
-        req.setAttribute("tsList", list);
+        req.setAttribute("tstList", list);
 
         return "../main/test_list.jsp";
     }

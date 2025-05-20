@@ -6,9 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.School;
+import bean.Subject;
 import bean.Teacher;
-import bean.Test;
-import dao.TestDao;
+import bean.TestListSubject;
+import dao.SubjectDao;
+import dao.TestListSubjectDao;
 import tool.Action;
 
 public class TestListSubjectExecuteAction extends Action {
@@ -33,18 +35,29 @@ public class TestListSubjectExecuteAction extends Action {
         Teacher Teacher = (Teacher) request.getSession().getAttribute("teacher");
         School School=Teacher.getSchool();
 
+      //科目名を取得
+        SubjectDao subDao = new SubjectDao();
+        Subject sub = subDao.get(subjectCd, School);
 
         // 成績データ取得
-        TestDao testDao = new TestDao();
-        List<Test> testList = testDao.searchByCondition(School.getCd(), Integer.parseInt(entYear), classNum, subjectCd);
+        TestListSubjectDao tsDao = new TestListSubjectDao();
+        List<TestListSubject> tsList = tsDao.filter(
+            Integer.parseInt(entYear), classNum, sub, School
+        );
+
+     // 成績がなければメッセージを設定
+        if (tsList.isEmpty()) {
+            request.setAttribute("message", "学生情報が存在しませんでした");
+        }
+
+
         // 画面に渡すデータ設定
-        request.setAttribute("testList", testList);
+        request.setAttribute("tsList", tsList);
         request.setAttribute("entYear", entYear);
         request.setAttribute("classNum", classNum);
-        request.setAttribute("subjectCd", subjectCd);
-        System.out.println("z");
+        request.setAttribute("sub", sub);
 
         // 成績一覧（科目）画面へ遷移
-        return "../main/test_list_student.jsp";
+        return "../main/test_list.jsp";
     }
 }
