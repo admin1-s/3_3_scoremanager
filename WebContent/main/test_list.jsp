@@ -121,7 +121,7 @@
 
 
 
-<form action="StudentSearch.action" method="post">
+<form action="TestListStudentExecute.action" method="post">
 
         <div class="form-container">
         <div class="form-group">
@@ -138,10 +138,14 @@
             </div>
 			</div>
 
-<div class="undertext">
-<p>科目情報を選択又は学生情報を入力し検索ボタンをクリックしてください</p>
-</div>
-        </form>
+		<div class="undertext">
+			<p>科目情報を選択又は学生情報を入力し検索ボタンをクリックしてください</p>
+		</div>
+</form>
+
+<c:if test="${not empty tests }">
+	<p>氏名：${student.getName()} （）</p>
+</c:if>
 </div>
 
 <jsp:include page="../tool/footer.jsp" />
