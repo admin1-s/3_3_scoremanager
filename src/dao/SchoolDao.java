@@ -20,8 +20,10 @@ public class SchoolDao extends Dao{
 		try{
 			st=con.prepareStatement("select * from school where cd=?");
 			st.setString(1, cd);
+			System.out.println("aiueo8");
 			ResultSet rSet=st.executeQuery();
 
+			System.out.println("aiue");
 			if (rSet.next()){
 				//リザルトセットが存在する場合
 				//学校インスタンスに学校コードと学校名をセット
@@ -31,6 +33,7 @@ public class SchoolDao extends Dao{
 				//存在しない場合
 				school=null;
 			}
+			System.out.println("aiu");
 		}catch (SQLException sqle){
 			throw sqle;
 		}finally{
@@ -38,6 +41,7 @@ public class SchoolDao extends Dao{
 			if (st !=null){
 				try{
 					st.close();
+					System.out.println("ai");
 				} catch (SQLException sqle){
 					throw sqle;
 				}
@@ -46,6 +50,7 @@ public class SchoolDao extends Dao{
 			if (con != null){
 				try{
 					con.close();
+					System.out.println("a");
 				}catch (SQLException sqle){
 					throw sqle;
 				}

@@ -73,7 +73,7 @@
     </div>
 
 	<!-- 科目情報検索 -->
-    <form action="SubjectSearch.action" method="post">
+    <form action="../scoremanager/TestListSubjectExecute.action" method="post">
         <div class="form-container">
         <div class="form-group">
         <p>科目情報</p>
@@ -121,7 +121,7 @@
 
 
 
-<form action="TestListStudentExecute.action" method="post">
+<form action="../scoremanager/TestListStudentExecute.action" method="post">
 
         <div class="form-container">
         <div class="form-group">

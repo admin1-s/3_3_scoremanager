@@ -90,37 +90,47 @@ public class TestDao extends Dao {
     }
 
     // 入学年度・クラス・科目による検索
-    public List<Test> searchByCondition(int entYear, String classNum, String subjectCd, String schoolCd) throws Exception {
+    public List<Test> searchByCondition( String schoolCd,int entYear, String classNum, String subjectCd) throws Exception {
         List<Test> list = new ArrayList<>();
         Connection con = getConnection();
+
         PreparedStatement st = con.prepareStatement(
-            "SELECT * FROM test t JOIN student s ON t.student_no = s.no " +
-            "WHERE s.ent_year = ? AND s.class_num = ? AND t.subject_cd = ? AND t.school_cd = ?"
+            "SELECT t.*, s.name, s.ent_year, s.class_num " +
+            "FROM test t " +
+            "JOIN student s ON t.student_no = s.no " +
+            "WHERE s.ent_year = ? AND s.class_num = ? " +
+            "AND t.subject_cd = ? AND t.school_cd = ? " +
+            "ORDER BY s.no, t.no"
         );
+
         st.setInt(1, entYear);
         st.setString(2, classNum);
         st.setString(3, subjectCd);
         st.setString(4, schoolCd);
+
         ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
             Test test = new Test();
 
             Student s = new Student();
-            s.setNo(rs.getString("STUDENT_NO"));
+            s.setNo(rs.getString("student_no"));
+            s.setName(rs.getString("name"));
+            s.setEntYear(rs.getInt("ent_year"));
+            s.setClassNum(rs.getString("class_num"));
             test.setStudent(s);
 
             Subject sub = new Subject();
-            sub.setCd(rs.getString("SUBJECT_CD"));
+            sub.setCd(rs.getString("subject_cd"));
             test.setSubject(sub);
 
             School sch = new School();
-            sch.setCd(rs.getString("SCHOOL_CD"));
+            sch.setCd(rs.getString("school_cd"));
             test.setSchool(sch);
 
-            test.setNo(rs.getInt("NO"));
-            test.setPoint(rs.getInt("POINT"));
-            test.setClassNum(rs.getString("CLASS_NUM"));
+            test.setNo(rs.getInt("no"));        // 1回目 or 2回目
+            test.setPoint(rs.getInt("point"));  // 点数
+            test.setClassNum(rs.getString("class_num"));
 
             list.add(test);
         }
@@ -131,6 +141,7 @@ public class TestDao extends Dao {
 
         return list;
     }
+
 
     // 学校による科目フィルター
     public List<Subject> filter(School school) throws Exception {
