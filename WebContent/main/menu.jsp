@@ -2,7 +2,7 @@
 <%--メニュー画面を表示するクラス--%>
 <div class="menu">
     <nav>
-    <a href="../main/index.jsp">メニュー</a>
+    <a href="../scoremanager/Menu.action">メニュー</a>
     <a href="../scoremanager/StudentList.action">学生管理</a>
     <a href="#">成績管理</a>
     <a href="../scoremanager/TestRegist.action">　成績登録</a>

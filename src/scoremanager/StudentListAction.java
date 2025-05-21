@@ -89,15 +89,14 @@ public class StudentListAction extends Action {
         List<String> list = cNumDao.filter(teacher.getSchool());
 
         // 検索条件によって学生リスト取得
-        if (entYear != null && !classNum.equals("0")) {
+        if (entYear!=null && !classNum.equals("0")) {
             students = sDao.search(entYear, classNum, isAttend);
-        } else if (entYear != null && classNum.equals("0")) {
+        } else if ("0".equals("entYear") && classNum.equals("0")) {
             students = sDao.search(entYear, null, isAttend);
         } else if (entYear == null && (classNum == null || classNum.equals("0"))) {
             students = sDao.search(null, null, isAttend);
-        } else {
-            errors.put("f1", "クラスを指定する場合は入学年度を指定してください");
-            request.setAttribute("errors", errors);
+        } else{
+        	request.setAttribute("errors", "クラスを指定する場合は入学年度を指定してください");
             students = sDao.search(null, null, isAttend);
         }
 
