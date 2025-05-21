@@ -47,7 +47,7 @@
             <button type="submit" class="btn btn-primary w-100">絞込み</button>
           </div>
         </div>
-        <div class="mt-2 text-warning">${errors.get("f1")}</div>
+        <div class="mt-2 text-warning">${errors}</div>
       </form>
 
       <!-- 新規登録 -->
