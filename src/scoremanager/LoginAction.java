@@ -11,7 +11,7 @@ public class LoginAction extends Action{
         HttpServletRequest request, HttpServletResponse response
     ) throws Exception {
 
-    	//subject_create.jspに遷移
+    	//ログイン画面に遷移
         return "../main/login-in.jsp";
     }
 }
