@@ -57,8 +57,7 @@
 
       <!-- 検索結果表示 -->
       <div class="px-4">
-        <c:choose>
-          <c:when test="${students.size() > 0}">
+          <c:if test="${students != null && students.size() > 0}">
             <div class="mb-2">検索結果：${students.size()}件</div>
             <table class="table table-bordered table-hover table-striped align-middle">
               <thead class="table-light">
@@ -91,11 +90,10 @@
                 </c:forEach>
               </tbody>
             </table>
-          </c:when>
-          <c:otherwise>
+          </c:if>
+          <c:if test="${empty students && empty errors}">
             <div class="text-danger">学生情報が存在しませんでした</div>
-          </c:otherwise>
-        </c:choose>
+          </c:if>
       </div>
     </section>
   </c:param>

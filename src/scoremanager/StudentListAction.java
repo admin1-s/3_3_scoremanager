@@ -22,7 +22,7 @@ public class StudentListAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
+    	HttpSession session = request.getSession();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
 
         //未ログインの時
@@ -88,17 +88,21 @@ public class StudentListAction extends Action {
         // クラス番号一覧取得
         List<String> list = cNumDao.filter(teacher.getSchool());
 
-        // 検索条件によって学生リスト取得
-        if (entYear!=null && !classNum.equals("0")) {
+        if (entYear != null && entYear != 0 && !classNum.equals("0")) {
+            System.out.println("通ってます１");
             students = sDao.search(entYear, classNum, isAttend);
-        } else if ("0".equals("entYear") && classNum.equals("0")) {
+        } else if (entYear != null && entYear != 0 && classNum.equals("0")) {
+            System.out.println("通ってます２");
             students = sDao.search(entYear, null, isAttend);
-        } else if (entYear == null && (classNum == null || classNum.equals("0"))) {
+        } else if ((entYear == null || entYear == 0) && (classNum == null || classNum.equals("0"))) {
+            System.out.println("通ってます３");
             students = sDao.search(null, null, isAttend);
-        } else{
-        	request.setAttribute("errors", "クラスを指定する場合は入学年度を指定してください");
+        } else {
+            System.out.println("通ってます４");
+            request.setAttribute("errors", "クラスを指定する場合は入学年度を指定してください");
             students = sDao.search(null, null, isAttend);
         }
+
 
         // JSPに渡すデータをセット
         request.setAttribute("f1", entYear);          // 入学年度
@@ -108,8 +112,6 @@ public class StudentListAction extends Action {
         request.setAttribute("ent_year_set", entYearSet); // 入学年度選択肢
 
         // JSPへフォワード
-        request.getRequestDispatcher("../main/studentlist.jsp").forward(request, response);
-
-        return null; // forward なので null
+        return "../main/studentlist.jsp";
     }
 }
