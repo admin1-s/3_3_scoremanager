@@ -11,7 +11,7 @@
         <p style="color: red; text-align: center;">${message}</p>
     </c:if>
 
-    <form action="../scoremanager/Login.action" method="post">
+    <form action="../scoremanager/LoginExecute.action" method="post">
         <input type="text" name="id" class="login-input" placeholder="半角でご入力ください" value="admin" required />
 		<input type="password" name="password" class="login-input" placeholder="30字以内の半角英数字でご入力ください" required />
         <div class="remember-me">
