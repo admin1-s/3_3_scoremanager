@@ -4,7 +4,7 @@
 <div class="login-container">
     <div class="head">ログイン</div>
     <div class="error-message">
-        ログインに失敗しました。IDまたはパスワードが正しくありません。
+        ログインに失敗しました。IDまたはパスワードが確認できませんでした。
     </div>
     <form action="../scoremanager.main/Login.action" method="post">
         <input type="text" name="id" class="login-input" placeholder="ID" value="admin" required />
