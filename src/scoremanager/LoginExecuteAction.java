@@ -32,8 +32,10 @@ public class LoginExecuteAction extends Action {
                 return "Menu.action";
             }
 
-
+            request.setAttribute("id", id); // 入力ID保持
+            request.setAttribute("message", "ログインに失敗しました。IDまたはパスワードが確認できませんでした。");
             return "../main/login-error.jsp"; // 認証失敗
+
         } catch (Exception e) {
             e.printStackTrace(); // ログに出す
             return "../main/error.jsp"; // ← ここでエラーページへ飛ばす

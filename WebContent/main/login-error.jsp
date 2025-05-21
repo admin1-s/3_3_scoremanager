@@ -7,7 +7,7 @@
         ログインに失敗しました。IDまたはパスワードが確認できませんでした。
     </div>
     <form action="../scoremanager/LoginExecute.action" method="post">
-        <input type="text" name="id" class="login-input" placeholder="ID" value="admin" required />
+        <input type="text" name="id" class="login-input" placeholder="ID" value="${id}" required />
         <input type="password" name="password" class="login-input" placeholder="パスワード" required />
         <div class="remember-me">
             <input type="checkbox" id="showPassword" />
