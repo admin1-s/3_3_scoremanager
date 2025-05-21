@@ -29,7 +29,7 @@ public class LoginExecuteAction extends Action {
                 teacher.setSchool(school);
 
                 session.setAttribute("teacher", teacher);
-                return "../main/index.jsp";
+                return "Menu.action";
             }
 
 
