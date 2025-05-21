@@ -89,7 +89,7 @@ public class StudentListAction extends Action {
         List<String> list = cNumDao.filter(teacher.getSchool());
 
         // 検索条件によって学生リスト取得
-        if (entYear==null && !classNum.equals("0")) {
+        if (entYear!=null && !classNum.equals("0")) {
             students = sDao.search(entYear, classNum, isAttend);
         } else if ("0".equals("entYear") && classNum.equals("0")) {
             students = sDao.search(entYear, null, isAttend);
