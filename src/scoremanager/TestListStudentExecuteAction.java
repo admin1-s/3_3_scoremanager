@@ -4,10 +4,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import bean.ClassNum;
+import bean.School;
 import bean.Student;
+import bean.Subject;
+import bean.Teacher;
 import bean.TestListStudent;
+import dao.ClassNumDao;
 import dao.StudentDao;
+import dao.SubjectDao;
 import dao.TestListStudentDao;
 import tool.Action;
 
@@ -15,6 +22,9 @@ public class TestListStudentExecuteAction extends Action {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+    	//sessionからteacher情報の取得
+    	HttpSession session = req.getSession();
+    	Teacher teacher = (Teacher) session.getAttribute("teacher");
 
         // 入力された学生番号を取得
         String f4 = req.getParameter("f4");
@@ -47,7 +57,24 @@ public class TestListStudentExecuteAction extends Action {
         }
 
 
+      //検索後のセレクトボックスに値を入れるための処理
+        School school=teacher.getSchool();
 
+    	ClassNumDao classDao=new ClassNumDao();
+    	List<ClassNum> classList=classDao.getClassNum(school);
+
+    	SubjectDao subjectDao=new SubjectDao();
+    	List<Subject> subjectList=subjectDao.filter(school);
+
+    	int currentYear=java.time.Year.now().getValue();
+    	int[] yearList=new int[10];
+    	for (int i=0 ; i<10 ; i++){
+    	   yearList[i]=currentYear-i;
+    	}
+
+    	req.setAttribute("classList", classList);
+    	req.setAttribute("subjectList", subjectList);
+    	req.setAttribute("yearList", yearList);
 
 
         // リクエストに結果を格納
