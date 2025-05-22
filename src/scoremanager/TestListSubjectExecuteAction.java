@@ -29,14 +29,6 @@ public class TestListSubjectExecuteAction extends Action {
         String classNum = request.getParameter("f2");
         String subjectCd = request.getParameter("f3");
 
-
-        // 入力チェック
-        if (entYear == null || classNum == null || subjectCd == null ||
-            entYear.isEmpty() || classNum.isEmpty() || subjectCd.isEmpty()) {
-            request.setAttribute("error", "入学年度とクラスと科目を選択してください");
-            return "../main/test_list.jsp";
-        }
-
         // セッションから学校情報を取得
         Teacher Teacher = (Teacher) request.getSession().getAttribute("teacher");
         School School=Teacher.getSchool();
@@ -81,6 +73,17 @@ public class TestListSubjectExecuteAction extends Action {
     	request.setAttribute("classList", classList);
     	request.setAttribute("subjectList", subjectList);
     	request.setAttribute("yearList", yearList);
+
+    	// 入力チェック
+        if (entYear == null || classNum == null || subjectCd == null ||
+            entYear.isEmpty() || classNum.isEmpty() || subjectCd.isEmpty()) {
+            request.setAttribute("error", "入学年度とクラスと科目を選択してください");
+
+        	request.setAttribute("classList", classList);
+        	request.setAttribute("subjectList", subjectList);
+        	request.setAttribute("yearList", yearList);
+            return "../main/test_list.jsp";
+        }
 
 
         // 成績一覧（科目）画面へ遷移
