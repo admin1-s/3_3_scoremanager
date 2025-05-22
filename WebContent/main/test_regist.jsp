@@ -123,7 +123,7 @@
 			<select name="f1" style="margin-top: 5px;">
 				<option value="">--------</option>
 				<c:forEach var="year" items="${yearList }">
-					<option value="${year }" <c:if test="${year == selectedYear}">selected</c:if>>${year}</option>
+					<option value="${year }" <c:if test="${year == f1}">selected</c:if>>${year}</option>
 				</c:forEach>
 			</select>
 			</div>
@@ -133,7 +133,7 @@
 			<select name="f2" style="margin-top: 5px;">
 				<option value="">--------</option>
 				<c:forEach var="c" items="${classList }">
-					<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == selectedClass}">selected</c:if>>${c.getClassNum()}</option>
+					<option value="${c.getClassNum() }"  <c:if test="${c.getClassNum() == f2}">selected</c:if>>${c.getClassNum()}</option>
 				</c:forEach>
 			</select>
 			</div>
@@ -143,7 +143,7 @@
 			<select name="f3" style="margin-top: 5px;">
 				<option value="">--------</option>
 				<c:forEach var="sub" items="${subjectList }">
-					<option value="${sub.getCd() }" <c:if test="${sub.getCd() ==selectedSubject }">selected</c:if>>${sub.getName() }</option>
+					<option value="${sub.getCd() }" <c:if test="${sub.getCd() == f3 }">selected</c:if>>${sub.getName() }</option>
 				</c:forEach>
 			</select>
 			</div>

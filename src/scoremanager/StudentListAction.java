@@ -89,16 +89,12 @@ public class StudentListAction extends Action {
         List<String> list = cNumDao.filter(teacher.getSchool());
 
         if (entYear != null && entYear != 0 && !classNum.equals("0")) {
-            System.out.println("通ってます１");
             students = sDao.search(entYear, classNum, isAttend);
         } else if (entYear != null && entYear != 0 && classNum.equals("0")) {
-            System.out.println("通ってます２");
             students = sDao.search(entYear, null, isAttend);
         } else if ((entYear == null || entYear == 0) && (classNum == null || classNum.equals("0"))) {
-            System.out.println("通ってます３");
             students = sDao.search(null, null, isAttend);
         } else {
-            System.out.println("通ってます４");
             request.setAttribute("errors", "クラスを指定する場合は入学年度を指定してください");
             students = sDao.search(null, null, isAttend);
         }
