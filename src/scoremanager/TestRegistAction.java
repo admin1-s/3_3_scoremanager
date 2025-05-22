@@ -88,9 +88,9 @@ public class TestRegistAction extends Action{
         	} catch (NumberFormatException e){
         		request.setAttribute("message", "検索条件が正しくありません");
         	}
-        } else if (request.getParameter("entYear") != null){
+        } else {
         	//入力のいずれかが未入力の場合（検索ボタンが押されたが未入力）
-        	request.setAttribute("message", "すべての項目を選択してください");
+        	request.setAttribute("message", "入学年度とクラスと科目と回数を選択してください");
         }
 
 
