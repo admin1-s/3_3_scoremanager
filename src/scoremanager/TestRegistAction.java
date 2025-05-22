@@ -88,10 +88,13 @@ public class TestRegistAction extends Action{
         	} catch (NumberFormatException e){
         		request.setAttribute("message", "検索条件が正しくありません");
         	}
-        } else {
+        }else if (entYearStr == null || classNum == null || subjectCd == null || countStr == null){
+        	//最初にtest_regist.jspに遷移したとき
+        }else{
         	//入力のいずれかが未入力の場合（検索ボタンが押されたが未入力）
         	request.setAttribute("message", "入学年度とクラスと科目と回数を選択してください");
         }
+
 
 
 
